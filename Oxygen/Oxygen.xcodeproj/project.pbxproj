@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B72E19D245759B000FF996C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B72E19C245759B000FF996C /* File.swift */; };
 		7F6365E62457574E002D137D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E52457574E002D137D /* AppDelegate.swift */; };
 		7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E72457574E002D137D /* SceneDelegate.swift */; };
 		7F6365ED2457574E002D137D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6365EB2457574E002D137D /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B72E19C245759B000FF996C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File.swift; path = Oxygen/File.swift; sourceTree = SOURCE_ROOT; };
 		7F6365E22457574D002D137D /* Oxygen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxygen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6365E52457574E002D137D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6365E72457574E002D137D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		7F6365FB24575783002D137D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2B72E19C245759B000FF996C /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 				7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */,
 				7F6365E62457574E002D137D /* AppDelegate.swift in Sources */,
 				7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */,
+				2B72E19D245759B000FF996C /* File.swift in Sources */,
 				7F6366022457584E002D137D /* PlantDetailViewController.swift in Sources */,
 				7F6366002457583E002D137D /* RegisterViewController.swift in Sources */,
 			);
