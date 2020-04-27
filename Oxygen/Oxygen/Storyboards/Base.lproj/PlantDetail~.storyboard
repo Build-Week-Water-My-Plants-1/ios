@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHk-59-NzP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -7,20 +7,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="x5k-bc-S6X">
             <objects>
-                <viewController id="MQU-IQ-d5Z" sceneMemberID="viewController">
+                <viewController id="MQU-IQ-d5Z" customClass="LoginViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wTT-Gc-wRi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXT-rD-qWP">
-                                <rect key="frame" x="184" y="741" width="46" height="30"/>
+                                <rect key="frame" x="20" y="746" width="374" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="blm-YW-FOV" kind="show" identifier="RegisterSegue" id="5AJ-MA-yhh"/>
+                                    <segue destination="blm-YW-FOV" kind="show" identifier="RegisterButtonTappedSegue" id="5AJ-MA-yhh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -31,12 +31,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qgk-1I-Zzi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1346" y="-1009"/>
+            <point key="canvasLocation" x="1344.9275362318842" y="-1009.1517857142857"/>
         </scene>
-        <!--View Controller-->
+        <!--Register View Controller-->
         <scene sceneID="XmY-pW-jNS">
             <objects>
-                <viewController id="blm-YW-FOV" sceneMemberID="viewController">
+                <viewController id="blm-YW-FOV" customClass="RegisterViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rXc-dJ-O7J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,16 +49,16 @@
             </objects>
             <point key="canvasLocation" x="2229" y="-1009"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Plants Table View Controller-->
         <scene sceneID="HGs-Fr-61k">
             <objects>
-                <tableViewController id="PtH-kl-NLi" sceneMemberID="viewController">
+                <tableViewController id="PtH-kl-NLi" customClass="PlantsTableViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BXY-fc-Eqn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Y3J-Rl-sSQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" id="Y3J-Rl-sSQ">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y3J-Rl-sSQ" id="Ngn-8O-RcO">
@@ -77,17 +77,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="0ym-rm-k5u"/>
                     <connections>
-                        <segue destination="MQU-IQ-d5Z" kind="show" id="B6F-n8-ICR"/>
+                        <segue destination="MQU-IQ-d5Z" kind="show" identifier="LoginViewSegue" id="B6F-n8-ICR"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F4v-kk-zih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1347.8260869565217" y="-280.58035714285711"/>
         </scene>
-        <!--View Controller-->
+        <!--Plant Detail View Controller-->
         <scene sceneID="WpY-BJ-6jP">
             <objects>
-                <viewController id="fhp-Ko-9BW" sceneMemberID="viewController">
+                <viewController id="fhp-Ko-9BW" customClass="PlantDetailViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="D9d-je-hUM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

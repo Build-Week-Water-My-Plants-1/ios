@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mHk-59-NzP">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Plants Table View Controller-->
+        <scene sceneID="HGs-Fr-61k">
+            <objects>
+                <tableViewController id="PtH-kl-NLi" customClass="PlantsTableViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BXY-fc-Eqn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" id="Y3J-Rl-sSQ">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y3J-Rl-sSQ" id="Ngn-8O-RcO">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Ayj-yp-8pL" kind="show" identifier="PlantDetailSegue" id="GD1-lB-C9h"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="PtH-kl-NLi" id="0Vu-KY-O1q"/>
+                            <outlet property="delegate" destination="PtH-kl-NLi" id="dHy-in-JqA"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="0ym-rm-k5u"/>
+                    <connections>
+                        <segue destination="cKW-0n-8yK" kind="show" identifier="LoginViewSegue" id="B6F-n8-ICR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F4v-kk-zih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1347.8260869565217" y="-280.58035714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="EcU-y6-yBw">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="mHk-59-NzP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="s3s-bI-KKm">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PtH-kl-NLi" kind="relationship" relationship="rootViewController" id="zjq-Ol-eEL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bc8-rl-d74" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437.68115942028987" y="-280.58035714285711"/>
+        </scene>
+        <!--PlantDetail-->
+        <scene sceneID="6oF-0q-Spb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PlantDetail" id="Ayj-yp-8pL" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="skC-WP-OEz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dwU-UV-a1e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1347" y="136"/>
+        </scene>
+        <!--Login-Register-->
+        <scene sceneID="Vmi-Vi-oEr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login-Register" id="cKW-0n-8yK" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="zyn-fC-yop"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBi-57-nRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1929" y="-281"/>
+        </scene>
+    </scenes>
+</document>
