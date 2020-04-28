@@ -42,10 +42,6 @@ class RegisterViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func registerAccount(_ sender: UIButton) {
-        
-    }
-    
-    @IBAction func switchToLogin(_ sender: UIButton) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
 }

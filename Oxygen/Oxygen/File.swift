@@ -8,5 +8,8 @@
 
 import Foundation
 
-
+//testing for github purposes right hurrrrrr
+//NOTES
+//TODO: Implement a water all button
+//TODO: Sections. 
 // Comment that was added

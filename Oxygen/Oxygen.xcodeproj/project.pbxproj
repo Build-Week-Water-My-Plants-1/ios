@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2B72E19D245759B000FF996C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B72E19C245759B000FF996C /* File.swift */; };
+		2BAC2FE42458C3C8002BD025 /* Oxygen.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FE22458C3C8002BD025 /* Oxygen.xcdatamodeld */; };
+		2BAC2FE62458C655002BD025 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FE52458C655002BD025 /* CoreDataStack.swift */; };
+		2BAC2FE82458C6B1002BD025 /* Plant+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FE72458C6B1002BD025 /* Plant+Convenience.swift */; };
+		2BAC2FEA2458C7E7002BD025 /* User+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FE92458C7E7002BD025 /* User+Convenience.swift */; };
+		2BAC2FEC2458C90B002BD025 /* PlantRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FEB2458C90B002BD025 /* PlantRepresentation.swift */; };
+		2BAC2FEE2458C916002BD025 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FED2458C916002BD025 /* UserRepresentation.swift */; };
 		7F6365E62457574E002D137D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E52457574E002D137D /* AppDelegate.swift */; };
 		7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E72457574E002D137D /* SceneDelegate.swift */; };
 		7F6365ED2457574E002D137D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F6365EB2457574E002D137D /* Main.storyboard */; };
@@ -25,6 +31,12 @@
 
 /* Begin PBXFileReference section */
 		2B72E19C245759B000FF996C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File.swift; path = Oxygen/File.swift; sourceTree = SOURCE_ROOT; };
+		2BAC2FE32458C3C8002BD025 /* Oxygen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Oxygen.xcdatamodel; sourceTree = "<group>"; };
+		2BAC2FE52458C655002BD025 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		2BAC2FE72458C6B1002BD025 /* Plant+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plant+Convenience.swift"; sourceTree = "<group>"; };
+		2BAC2FE92458C7E7002BD025 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
+		2BAC2FEB2458C90B002BD025 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
+		2BAC2FED2458C916002BD025 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
 		7F6365E22457574D002D137D /* Oxygen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxygen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6365E52457574E002D137D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F6365E72457574E002D137D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +65,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2BAC2FE12458C3B7002BD025 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				2BAC2FE22458C3C8002BD025 /* Oxygen.xcdatamodeld */,
+				2BAC2FE52458C655002BD025 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		2BAC2FEF2458CB49002BD025 /* Plants */ = {
+			isa = PBXGroup;
+			children = (
+				2BAC2FE72458C6B1002BD025 /* Plant+Convenience.swift */,
+				2BAC2FEB2458C90B002BD025 /* PlantRepresentation.swift */,
+			);
+			path = Plants;
+			sourceTree = "<group>";
+		};
+		2BAC2FF02458CB55002BD025 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				2BAC2FE92458C7E7002BD025 /* User+Convenience.swift */,
+				2BAC2FED2458C916002BD025 /* UserRepresentation.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
 		7F6365D92457574D002D137D = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +146,9 @@
 		7F6365FB24575783002D137D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2BAC2FEF2458CB49002BD025 /* Plants */,
+				2BAC2FF02458CB55002BD025 /* Users */,
+				2BAC2FE12458C3B7002BD025 /* CoreData */,
 				2B72E19C245759B000FF996C /* File.swift */,
 			);
 			path = Models;
@@ -216,10 +258,16 @@
 				7F6365FE2457582B002D137D /* LoginViewController.swift in Sources */,
 				7F6366042457586C002D137D /* PlantsTableViewController.swift in Sources */,
 				7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */,
+				2BAC2FEC2458C90B002BD025 /* PlantRepresentation.swift in Sources */,
 				7F6365E62457574E002D137D /* AppDelegate.swift in Sources */,
 				7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */,
+				2BAC2FEE2458C916002BD025 /* UserRepresentation.swift in Sources */,
+				2BAC2FE62458C655002BD025 /* CoreDataStack.swift in Sources */,
 				2B72E19D245759B000FF996C /* File.swift in Sources */,
+				2BAC2FE42458C3C8002BD025 /* Oxygen.xcdatamodeld in Sources */,
+				2BAC2FE82458C6B1002BD025 /* Plant+Convenience.swift in Sources */,
 				7F6366022457584E002D137D /* PlantDetailViewController.swift in Sources */,
+				2BAC2FEA2458C7E7002BD025 /* User+Convenience.swift in Sources */,
 				7F6366002457583E002D137D /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +474,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2BAC2FE22458C3C8002BD025 /* Oxygen.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2BAC2FE32458C3C8002BD025 /* Oxygen.xcdatamodel */,
+			);
+			currentVersion = 2BAC2FE32458C3C8002BD025 /* Oxygen.xcdatamodel */;
+			path = Oxygen.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7F6365DA2457574D002D137D /* Project object */;
 }
