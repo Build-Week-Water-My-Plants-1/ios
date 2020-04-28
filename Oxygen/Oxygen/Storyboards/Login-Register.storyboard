@@ -10,7 +10,7 @@
         <!--Register View Controller-->
         <scene sceneID="x5k-bc-S6X">
             <objects>
-                <viewController id="MQU-IQ-d5Z" customClass="RegisterViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterView" id="MQU-IQ-d5Z" customClass="RegisterViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wTT-Gc-wRi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

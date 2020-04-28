@@ -69,10 +69,10 @@
             </objects>
             <point key="canvasLocation" x="1347" y="136"/>
         </scene>
-        <!--Login-Register-->
+        <!--RegisterView-->
         <scene sceneID="Vmi-Vi-oEr">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login-Register" id="cKW-0n-8yK" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Login-Register" referencedIdentifier="RegisterView" id="cKW-0n-8yK" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="zyn-fC-yop"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBi-57-nRI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

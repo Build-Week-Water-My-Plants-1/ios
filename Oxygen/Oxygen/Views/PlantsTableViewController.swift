@@ -9,15 +9,15 @@
 import UIKit
 
 class PlantsTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        let thisStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
+        let thisViewController = thisStoryboard.instantiateViewController(withIdentifier: "RegisterView")
+        thisViewController.modalPresentationStyle = .fullScreen
+        
+        present(thisViewController, animated: true)
     }
 
     // MARK: - Table view data source
