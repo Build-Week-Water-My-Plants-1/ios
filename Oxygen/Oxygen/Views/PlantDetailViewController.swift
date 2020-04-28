@@ -10,6 +10,12 @@ import UIKit
 
 class PlantDetailViewController: UIViewController {
 
+    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var plantNameTextField: UITextField!
+    @IBOutlet weak var speciesTextField: UITextField!
+    @IBOutlet weak var frequencyTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,14 +23,14 @@ class PlantDetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+  
+    @IBAction func savePlantButton(_ sender: Any) {
     }
-    */
-
+    
+    @IBAction func cancelButton(_ sender: Any) {
+    }
+    
+    @IBAction func ImageButton(_ sender: Any) {
+    }
+    
 }
