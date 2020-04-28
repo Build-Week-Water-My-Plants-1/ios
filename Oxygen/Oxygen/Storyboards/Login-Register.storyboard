@@ -108,7 +108,6 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="switchToLogin:" destination="MQU-IQ-d5Z" eventType="touchUpInside" id="CKU-vd-NRC"/>
                                     <segue destination="blm-YW-FOV" kind="presentation" modalPresentationStyle="fullScreen" id="cBB-A2-s36"/>
                                 </connections>
                             </button>
@@ -194,6 +193,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="login:" destination="blm-YW-FOV" eventType="touchUpInside" id="azA-9b-2xr"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to your Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9I-LN-T9p">
                                 <rect key="frame" x="8" y="106" width="398" height="20.5"/>
@@ -216,7 +218,7 @@
                                     <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="switchToLogin:" destination="MQU-IQ-d5Z" eventType="touchUpInside" id="Uq5-z9-oDx"/>
+                                    <action selector="switchToRegister:" destination="blm-YW-FOV" eventType="touchUpInside" id="YFw-sJ-5P7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -235,6 +237,10 @@
                         <viewLayoutGuide key="safeArea" id="cL8-Wn-nm3"/>
                     </view>
                     <navigationItem key="navigationItem" id="ppI-V1-uUM"/>
+                    <connections>
+                        <outlet property="passwordPasswordField" destination="jh9-Jw-sKA" id="ufM-Ar-MjF"/>
+                        <outlet property="usernameTextField" destination="9dR-Sg-hhC" id="nao-24-rMA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgQ-eR-nq4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
