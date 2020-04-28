@@ -31,7 +31,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordPasswordField: PasswordField!
     @IBOutlet weak var confirmPasswordPasswordField: PasswordField!
     
-    
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {

@@ -1,5 +1,5 @@
 //
-//  PassWordTextField.swift
+//  PasswordField.swift
 //  Oxygen
 //
 //  Created by Ezra Black on 4/27/20.
