@@ -22,8 +22,14 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    
+    /*
+    I kept the naming convention the same of "nameConnectionType" but it makes it look strange.
+     We might want to change it in the future but should be fine for now. You can access the
+     inputted user password with {passwordField}.password. (HO)
+    */
+    @IBOutlet weak var passwordPasswordField: PasswordField!
+    @IBOutlet weak var confirmPasswordPasswordField: PasswordField!
     
     // MARK: - View Lifecycle
     
