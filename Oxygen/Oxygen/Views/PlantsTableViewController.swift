@@ -13,10 +13,14 @@ class PlantsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+      
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         let thisStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
         let thisViewController = thisStoryboard.instantiateViewController(withIdentifier: "RegisterView")
         thisViewController.modalPresentationStyle = .fullScreen
-        
         present(thisViewController, animated: true)
     }
 
