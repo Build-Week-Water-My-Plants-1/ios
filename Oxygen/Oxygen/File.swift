@@ -9,4 +9,7 @@
 import Foundation
 
 
+//NOTES
+//TODO: Implement a water all button
+//TODO: Sections. 
 // Comment that was added
