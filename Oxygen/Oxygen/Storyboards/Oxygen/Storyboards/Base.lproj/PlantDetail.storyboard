@@ -108,6 +108,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="savePlantButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="pcu-SO-VQo"/>
                                     <action selector="savePlantTapped:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="REb-Bq-7Wp"/>
                                 </connections>
                             </button>
@@ -128,6 +129,7 @@
                                     <constraint firstAttribute="height" constant="267" id="h9G-pi-c7K"/>
                                 </constraints>
                                 <connections>
+                                    <action selector="ImageButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="4Za-7X-SX1"/>
                                     <action selector="cameraButtonTapped:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="UxU-ha-nLw"/>
                                 </connections>
                             </button>
@@ -150,6 +152,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="cancelButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="qUI-Zq-CGc"/>
                                     <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="unwindToTable:" id="veh-Os-Qhz"/>
                                 </connections>
                             </button>
@@ -198,10 +201,12 @@
                     <navigationItem key="navigationItem" id="iY3-zf-HOL"/>
                     <connections>
                         <outlet property="cancelButton" destination="TKi-YD-g3O" id="Mij-aM-pjW"/>
-                        <outlet property="frequencyTextField" destination="cbX-aP-R1u" id="cvj-MQ-4hX"/>
+                        <outlet property="frequencyTextField" destination="cbX-aP-R1u" id="waO-LP-Ygg"/>
+                        <outlet property="imageView" destination="aQn-QW-uuh" id="wGO-M3-vPL"/>
                         <outlet property="nicknameTextField" destination="Aqo-iL-dCG" id="NfB-09-YeL"/>
+                        <outlet property="plantNameTextField" destination="Aqo-iL-dCG" id="ota-6m-MTe"/>
                         <outlet property="saveButton" destination="rhr-aR-yLA" id="HBj-xE-rqi"/>
-                        <outlet property="speciesTextField" destination="ydB-ac-kvu" id="ZVy-oU-4h0"/>
+                        <outlet property="speciesTextField" destination="ydB-ac-kvu" id="qVL-QV-fip"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNn-Ui-Aqc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
