@@ -66,25 +66,25 @@ class PlantsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            let plant = fetchedResultsController.object(at: indexPath)
-            apiController.deletePlantFromServer(plant) { result in
-                guard let _ = try? result.get() else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    CoreDataStack.shared.mainContext.delete(movie)
-                    do {
-                        try CoreDataStack.shared.mainContext.save()
-                    } catch {
-                        CoreDataStack.shared.mainContext.reset()
-                        NSLog("Error saving managed object context: \(error)")
-                    }
-                }
-            }
-        }
-    }
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+//        if editingStyle == .delete {
+//            let plant = fetchedResultsController.object(at: indexPath)
+//            apiController.deletePlantFromServer(plant) { result in
+//                guard let _ = try? result.get() else {
+//                    return
+//                }
+//                DispatchQueue.main.async {
+//                    CoreDataStack.shared.mainContext.delete(movie)
+//                    do {
+//                        try CoreDataStack.shared.mainContext.save()
+//                    } catch {
+//                        CoreDataStack.shared.mainContext.reset()
+//                        NSLog("Error saving managed object context: \(error)")
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
 extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
