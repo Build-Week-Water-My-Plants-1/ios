@@ -44,48 +44,47 @@ class PlantsTableViewController: UITableViewController {
             present(registerViewController, animated: true)
         }
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as?
             PlantTableViewCell else {
                 fatalError("Can't dequeue cell of type \(PlantTableViewCell())")
         }
-//        cell.plant = fetchedResultsController.object(at: indexPath)
-//        cell.user = fetchedResultsController.object(at: indexPath)
+        //        cell.plant = fetchedResultsController.object(at: indexPath)
+        //        cell.user = fetchedResultsController.object(at: indexPath)
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    
-
-    
-    // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            let plant = fetchedResultsController.object(at: indexPath)
+            apiController.deletePlantFromServer(plant) { result in
+                guard let _ = try? result.get() else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    CoreDataStack.shared.mainContext.delete(movie)
+                    do {
+                        try CoreDataStack.shared.mainContext.save()
+                    } catch {
+                        CoreDataStack.shared.mainContext.reset()
+                        NSLog("Error saving managed object context: \(error)")
+                    }
+                }
+            }
+        }
     }
-    
-
-   
-
 }
 
 extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
