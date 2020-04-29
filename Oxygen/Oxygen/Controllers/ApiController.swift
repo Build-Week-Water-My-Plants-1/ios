@@ -169,10 +169,4 @@ class ApiController {
         user.password = userRepresentation.password
         user.phoneNumber = userRepresentation.phoneNumber
     }
-    
-//    private func postRequest(for url: URL) -> URLRequest {
-//        var request = URLRequest(url: url)
-//        request.httpMethod = HTTPMethod.post.rawValue
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//    }
 }
