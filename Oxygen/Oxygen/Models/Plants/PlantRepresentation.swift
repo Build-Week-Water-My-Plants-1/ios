@@ -9,7 +9,7 @@
 import Foundation
 
 struct PlantRepresentation: Codable {
-    let id: UUID
+    let id: String
     let commonName: String
     let scientificName: String
     let h2oFrequency: Double

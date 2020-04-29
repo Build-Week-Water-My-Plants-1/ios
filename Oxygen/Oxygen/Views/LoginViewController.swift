@@ -10,7 +10,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    // MARK: - Properties
+    
+    var apiController = ApiController()
+    
     // MARK: - Outlets
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var switchToRegisterButton: UIButton!
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordPasswordField: PasswordField!
@@ -19,15 +28,39 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        activityIndicator.isHidden = true
     }
     
     // MARK: - Actions
     
     @IBAction func login(_ sender: UIButton) {
-        // TODO(HO): - Send to api controller and check if logged in if so
-        navigationController?.popToViewController(PlantsTableViewController(), animated: true)
+        guard let username = usernameTextField.text else { return }
+        
+        loginButton.isEnabled = false
+        switchToRegisterButton.isEnabled = false
+        
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        apiController.login(username: username, password: passwordPasswordField.password) { result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                }
+            case .failure(_):
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                NSLog("Failed to log in.")
+            }
+        }
     }
     
     @IBAction func switchToRegister(_ sender: UIButton) {
