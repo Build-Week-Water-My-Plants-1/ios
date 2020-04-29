@@ -28,22 +28,9 @@
 		7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F636605245758D5002D137D /* PlantTableViewCell.swift */; };
 		7F63660D24576C1F002D137D /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660B24576C1F002D137D /* PlantDetail.storyboard */; };
 		7F63660F24576C4E002D137D /* Login-Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660E24576C4E002D137D /* Login-Register.storyboard */; };
-		7F70972D2459546500881749 /* OxygenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70972C2459546500881749 /* OxygenTests.swift */; };
-		7F7097392459559800881749 /* PlantControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7097382459559800881749 /* PlantControllerTests.swift */; };
-		7F70973B245955A900881749 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973A245955A900881749 /* UserControllerTests.swift */; };
 		7F70973D2459565700881749 /* BearerToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973C2459565700881749 /* BearerToken.swift */; };
 		7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7280124579BC9003C7A18 /* PasswordField.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7F70972F2459546500881749 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7F6365DA2457574D002D137D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 7F6365E12457574D002D137D;
-			remoteInfo = Oxygen;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2B72E19C245759B000FF996C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File.swift; path = Oxygen/File.swift; sourceTree = SOURCE_ROOT; };
@@ -70,26 +57,12 @@
 		7F636605245758D5002D137D /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		7F63660C24576C1F002D137D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Oxygen/Storyboards/Base.lproj/PlantDetail.storyboard; sourceTree = "<group>"; };
 		7F63660E24576C4E002D137D /* Login-Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login-Register.storyboard"; sourceTree = "<group>"; };
-		7F70972A2459546500881749 /* OxygenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxygenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F70972C2459546500881749 /* OxygenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenTests.swift; sourceTree = "<group>"; };
-		7F70972E2459546500881749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F7097342459557600881749 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		7F7097362459558100881749 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
-		7F7097382459559800881749 /* PlantControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantControllerTests.swift; sourceTree = "<group>"; };
-		7F70973A245955A900881749 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
 		7F70973C2459565700881749 /* BearerToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearerToken.swift; sourceTree = "<group>"; };
 		7FA7280124579BC9003C7A18 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7F6365DF2457574D002D137D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F7097272459546500881749 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,22 +99,11 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
-		2BAC2FF62459F1BB002BD025 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				7F7097342459557600881749 /* UserController.swift */,
-				7F7097362459558100881749 /* PlantController.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		7F6365D92457574D002D137D = {
 			isa = PBXGroup;
 			children = (
 				7F6365E42457574E002D137D /* Oxygen */,
-				7F70972B2459546500881749 /* OxygenTests */,
 				7F6365E32457574D002D137D /* Products */,
-				2BAC2FF62459F1BB002BD025 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,7 +111,6 @@
 			isa = PBXGroup;
 			children = (
 				7F6365E22457574D002D137D /* Oxygen.app */,
-				7F70972A2459546500881749 /* OxygenTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -230,17 +191,6 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		7F70972B2459546500881749 /* OxygenTests */ = {
-			isa = PBXGroup;
-			children = (
-				7F70972C2459546500881749 /* OxygenTests.swift */,
-				7F70972E2459546500881749 /* Info.plist */,
-				7F7097382459559800881749 /* PlantControllerTests.swift */,
-				7F70973A245955A900881749 /* UserControllerTests.swift */,
-			);
-			path = OxygenTests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,24 +211,6 @@
 			productReference = 7F6365E22457574D002D137D /* Oxygen.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7F7097292459546500881749 /* OxygenTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7F7097332459546500881749 /* Build configuration list for PBXNativeTarget "OxygenTests" */;
-			buildPhases = (
-				7F7097262459546500881749 /* Sources */,
-				7F7097272459546500881749 /* Frameworks */,
-				7F7097282459546500881749 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7F7097302459546500881749 /* PBXTargetDependency */,
-			);
-			name = OxygenTests;
-			productName = OxygenTests;
-			productReference = 7F70972A2459546500881749 /* OxygenTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -291,10 +223,6 @@
 				TargetAttributes = {
 					7F6365E12457574D002D137D = {
 						CreatedOnToolsVersion = 11.4.1;
-					};
-					7F7097292459546500881749 = {
-						CreatedOnToolsVersion = 11.4.1;
-						TestTargetID = 7F6365E12457574D002D137D;
 					};
 				};
 			};
@@ -312,7 +240,6 @@
 			projectRoot = "";
 			targets = (
 				7F6365E12457574D002D137D /* Oxygen */,
-				7F7097292459546500881749 /* OxygenTests */,
 			);
 		};
 /* End PBXProject section */
@@ -327,13 +254,6 @@
 				7F6365EF2457574F002D137D /* Assets.xcassets in Resources */,
 				7F6365ED2457574E002D137D /* Main.storyboard in Resources */,
 				7F63660D24576C1F002D137D /* PlantDetail.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		7F7097282459546500881749 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,25 +285,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F7097262459546500881749 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7F70972D2459546500881749 /* OxygenTests.swift in Sources */,
-				7F7097392459559800881749 /* PlantControllerTests.swift in Sources */,
-				7F70973B245955A900881749 /* UserControllerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7F7097302459546500881749 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 7F6365E12457574D002D137D /* Oxygen */;
-			targetProxy = 7F70972F2459546500881749 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		7F6365EB2457574E002D137D /* Main.storyboard */ = {
@@ -563,46 +465,6 @@
 			};
 			name = Release;
 		};
-		7F7097312459546500881749 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HL3XLM68NV;
-				INFOPLIST_FILE = OxygenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oxygen.app/Oxygen";
-			};
-			name = Debug;
-		};
-		7F7097322459546500881749 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HL3XLM68NV;
-				INFOPLIST_FILE = OxygenTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oxygen.app/Oxygen";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -620,15 +482,6 @@
 			buildConfigurations = (
 				7F6365F72457574F002D137D /* Debug */,
 				7F6365F82457574F002D137D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7F7097332459546500881749 /* Build configuration list for PBXNativeTarget "OxygenTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7F7097312459546500881749 /* Debug */,
-				7F7097322459546500881749 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
