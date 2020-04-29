@@ -74,12 +74,13 @@ class RegisterViewController: UIViewController {
             case .success(_):
                 DispatchQueue.main.async{
                     self.performSegue(withIdentifier: "ShowLoginSegue", sender: nil)
-                    self.showAlert(title: "Success!", message: "Please login.")
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                 }
             case .failure(_):
-                NSLog("Failed to register")
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
+                self.showAlert(title: "Failure", message: "Couldn't register new user.")
             }
         }
     }
@@ -89,6 +90,6 @@ class RegisterViewController: UIViewController {
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        self.present(alert, animated: true)
+        present(alert, animated: true, completion: nil)
     }
 }

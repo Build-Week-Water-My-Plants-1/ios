@@ -28,7 +28,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         activityIndicator.isHidden = true
     }
     
@@ -52,6 +56,8 @@ class LoginViewController: UIViewController {
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
                 }
             case .failure(_):
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
                 NSLog("Failed to log in.")
             }
         }
