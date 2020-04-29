@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct UserRepresentation {
-    let id: UUID
+struct UserRepresentation: Codable {
+    let id: String?
     let username: String
     let password: String
-    let phoneNumber: String
+    let phoneNumber: String?
 }
