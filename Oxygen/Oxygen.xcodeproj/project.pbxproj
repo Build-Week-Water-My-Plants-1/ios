@@ -29,6 +29,7 @@
 		7F63660D24576C1F002D137D /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660B24576C1F002D137D /* PlantDetail.storyboard */; };
 		7F63660F24576C4E002D137D /* Login-Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660E24576C4E002D137D /* Login-Register.storyboard */; };
 		7F70973D2459565700881749 /* BearerToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973C2459565700881749 /* BearerToken.swift */; };
+
 		7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7280124579BC9003C7A18 /* PasswordField.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		7F63660C24576C1F002D137D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Oxygen/Storyboards/Base.lproj/PlantDetail.storyboard; sourceTree = "<group>"; };
 		7F63660E24576C4E002D137D /* Login-Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login-Register.storyboard"; sourceTree = "<group>"; };
 		7F70973C2459565700881749 /* BearerToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearerToken.swift; sourceTree = "<group>"; };
+
 		7FA7280124579BC9003C7A18 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,7 +161,6 @@
 				2BAC2FF02458CB55002BD025 /* Users */,
 				2BAC2FE12458C3B7002BD025 /* CoreData */,
 				2B72E19C245759B000FF996C /* File.swift */,
-				7F70973C2459565700881749 /* BearerToken.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -264,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F70973D2459565700881749 /* BearerToken.swift in Sources */,
 				7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */,
 				7F6365FE2457582B002D137D /* LoginViewController.swift in Sources */,
 				7F6366042457586C002D137D /* PlantsTableViewController.swift in Sources */,

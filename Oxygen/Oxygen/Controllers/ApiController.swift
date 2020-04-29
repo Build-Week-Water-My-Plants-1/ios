@@ -55,7 +55,7 @@ class ApiController {
     
     private lazy var jsonEncoder: JSONEncoder = {
         let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
+        encoder.keyEncodingStrategy = .convertToSnakeCase
         return encoder
     }()
     
@@ -72,31 +72,46 @@ class ApiController {
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            if let error = error {
-                NSLog("Register failed with error: \(error.localizedDescription)")
-                return completion(.failure(.failedRegister))
-            }
+        do {
+            let jsonData = try jsonEncoder.encode(user.userRepresentation)
+            request.httpBody = jsonData
             
-            guard let data = data else {
-                NSLog("No data was returned from server.")
-                return completion(.failure(.noData))
-            }
-            
-            let context = CoreDataStack.shared.container.newBackgroundContext()
-            
-            context.perform {
-                do {
-                    let userRepresentation = try self.jsonDecoder.decode(UserRepresentation.self, from: data)
-                    self.updateUser(user: user, userRepresentation: userRepresentation)
-                    completion(.success(true))
-                } catch {
-                    NSLog("Failed to decode user from server with error: \(error)")
-                    completion(.failure(.otherError))
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    NSLog("Register failed with error: \(error.localizedDescription)")
+                    return completion(.failure(.failedRegister))
+                }
+
+                guard let response = response as? HTTPURLResponse else { return }
+                
+                if response.statusCode != 200 {
+                    NSLog("Response from server was bad: \(response)")
+                    return completion(.failure(.failedRegister))
+                }
+
+                guard let data = data else {
+                    NSLog("No data was returned from server.")
+                    return completion(.failure(.noData))
+                }
+
+                let context = CoreDataStack.shared.container.newBackgroundContext()
+
+                context.perform {
+                    do {
+                        let userRepresentation = try self.jsonDecoder.decode(UserRepresentation.self, from: data)
+                        self.updateUser(user: user, userRepresentation: userRepresentation)
+                        completion(.success(true))
+                    } catch {
+                        NSLog("Failed to decode user from server with error: \(error)")
+                        completion(.failure(.otherError))
+                    }
                 }
             }
+            .resume()
+        } catch {
+            NSLog("Failed to encode user \(user) with error \(error)")
+            completion(.failure(.otherError))
         }
-        .resume()
     }
     
     func login(username: String, password: String, completion: @escaping CompletionHandler = { _ in }) {
@@ -110,9 +125,15 @@ class ApiController {
             let jsonData = try jsonEncoder.encode(user)
             request.httpBody = jsonData
             
-            URLSession.shared.dataTask(with: request) { data, _, error in
+            URLSession.shared.dataTask(with: request) { data, response, error in
                 if let error = error {
                     NSLog("Log in failed with error: \(error)")
+                    return completion(.failure(.failedLogin))
+                }
+                
+                if let response = response as? HTTPURLResponse,
+                    response.statusCode != 200 {
+                    NSLog("Response from server was bad.")
                     return completion(.failure(.failedLogin))
                 }
                 
@@ -141,15 +162,11 @@ class ApiController {
     // MARK: - Helper Methods
     
     private func updateUser(user: User, userRepresentation: UserRepresentation) {
-        user.id = userRepresentation.id
+        guard let id = userRepresentation.id else { return }
+        
+        user.id = String(id)
         user.username = userRepresentation.username
         user.password = userRepresentation.password
         user.phoneNumber = userRepresentation.phoneNumber
     }
-    
-//    private func postRequest(for url: URL) -> URLRequest {
-//        var request = URLRequest(url: url)
-//        request.httpMethod = HTTPMethod.post.rawValue
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//    }
 }

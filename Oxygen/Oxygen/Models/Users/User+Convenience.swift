@@ -12,12 +12,9 @@ import CoreData
 extension User {
     
     var userRepresentation: UserRepresentation? {
-        guard let id = id,
-            let username = username,
-            let password = password,
-            let phoneNumber = phoneNumber else { return nil }
+        guard let username = username else { return nil }
         
-        return UserRepresentation(id: id,
+        return UserRepresentation(id: Int(id ?? ""),
                                   username: username,
                                   password: password,
                                   phoneNumber: phoneNumber)
@@ -35,14 +32,15 @@ extension User {
         self.phoneNumber = phoneNumber
     }
     
-    @discardableResult convenience init?(userRepresentation: UserRepresentation,
-                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        guard let phoneNumber = userRepresentation.phoneNumber else { return nil }
-        
-        self.init(id: userRepresentation.id,
-                  username: userRepresentation.username,
-                  password: userRepresentation.password,
-                  phoneNumber: phoneNumber,
-                  context: context)
-    }
+//    @discardableResult convenience init?(userRepresentation: UserRepresentation,
+//                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+//        guard let phoneNumber = userRepresentation.phoneNumber,
+//            let password = userRepresentation.password else { return nil }
+//
+//        self.init(id: String(userRepresentation.id ?? 0),
+//                  username: userRepresentation.username,
+//                  password: password,
+//                  phoneNumber: phoneNumber,
+//                  context: context)
+//    }
 }
