@@ -22,7 +22,7 @@ extension Plant {
                                    h2oFrequency: h2oFrequency)
     }
     
-    @discardableResult convenience init(id: UUID = UUID(),
+    @discardableResult convenience init(id: String,
                                         commonName: String,
                                         scientificName: String,
                                         frequency: Double = 1.0,

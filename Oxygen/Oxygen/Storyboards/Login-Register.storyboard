@@ -108,9 +108,12 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="blm-YW-FOV" kind="presentation" modalPresentationStyle="fullScreen" id="cBB-A2-s36"/>
+                                    <segue destination="blm-YW-FOV" kind="presentation" identifier="ShowLoginSegue" modalPresentationStyle="fullScreen" id="cBB-A2-s36"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="HXq-7u-12s">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -118,15 +121,19 @@
                             <constraint firstItem="wOR-qI-FgJ" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" constant="8" id="363-Pm-hAv"/>
                             <constraint firstItem="cpa-cQ-5Ql" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" id="94R-kE-T0x"/>
                             <constraint firstItem="c8e-m1-5U8" firstAttribute="top" secondItem="p7T-V1-GXS" secondAttribute="top" id="CAH-Xe-XQZ"/>
+                            <constraint firstItem="HXq-7u-12s" firstAttribute="bottom" secondItem="p7T-V1-GXS" secondAttribute="bottom" id="Dzk-de-v5W"/>
                             <constraint firstItem="dwN-EL-iMi" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" id="E3O-iI-qfa"/>
                             <constraint firstItem="7wA-gk-DHd" firstAttribute="top" secondItem="c8e-m1-5U8" secondAttribute="bottom" constant="20" id="Obi-1g-492"/>
                             <constraint firstItem="wOR-qI-FgJ" firstAttribute="trailing" secondItem="p7T-V1-GXS" secondAttribute="trailing" constant="-8" id="S2n-Xp-ymA"/>
+                            <constraint firstItem="HXq-7u-12s" firstAttribute="top" secondItem="p7T-V1-GXS" secondAttribute="top" id="SS8-8z-Tnf"/>
                             <constraint firstItem="p7T-V1-GXS" firstAttribute="trailing" secondItem="7wA-gk-DHd" secondAttribute="trailing" constant="8" id="ZBk-Hm-uuI"/>
+                            <constraint firstItem="HXq-7u-12s" firstAttribute="trailing" secondItem="p7T-V1-GXS" secondAttribute="trailing" id="ac9-S3-Qy1"/>
                             <constraint firstItem="c8e-m1-5U8" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" id="bUb-Xx-xpa"/>
                             <constraint firstItem="p7T-V1-GXS" firstAttribute="trailing" secondItem="dwN-EL-iMi" secondAttribute="trailing" id="f0l-Ad-OM9"/>
                             <constraint firstItem="wOR-qI-FgJ" firstAttribute="top" secondItem="7wA-gk-DHd" secondAttribute="bottom" constant="8" id="ikj-7Q-hJk"/>
                             <constraint firstItem="cpa-cQ-5Ql" firstAttribute="top" secondItem="dwN-EL-iMi" secondAttribute="bottom" constant="20" id="jeb-dQ-m1S"/>
                             <constraint firstItem="p7T-V1-GXS" firstAttribute="trailing" secondItem="c8e-m1-5U8" secondAttribute="trailing" id="mwI-H1-hqy"/>
+                            <constraint firstItem="HXq-7u-12s" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" id="ojz-Vl-y21"/>
                             <constraint firstItem="wOR-qI-FgJ" firstAttribute="top" secondItem="7wA-gk-DHd" secondAttribute="bottom" constant="8" id="vKB-jd-z53"/>
                             <constraint firstItem="dwN-EL-iMi" firstAttribute="top" secondItem="wOR-qI-FgJ" secondAttribute="bottom" constant="80" id="wKa-4G-3KP"/>
                             <constraint firstItem="7wA-gk-DHd" firstAttribute="leading" secondItem="p7T-V1-GXS" secondAttribute="leading" constant="8" id="zHk-Mb-zGU"/>
@@ -135,6 +142,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NHW-Xw-oo7"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="HXq-7u-12s" id="P6t-p0-bqT"/>
                         <outlet property="confirmPasswordLabel" destination="1Zg-gq-eaS" id="rc3-Ff-ad1"/>
                         <outlet property="confirmPasswordPasswordField" destination="8gW-VC-kkB" id="twF-1i-ogT"/>
                         <outlet property="createAccountLabel" destination="7wA-gk-DHd" id="eLC-f1-JUV"/>
@@ -142,6 +150,8 @@
                         <outlet property="passwordPasswordField" destination="MDB-3b-eIJ" id="lzk-B8-mOt"/>
                         <outlet property="phoneNumberLabel" destination="ZvF-AD-44y" id="9YU-cc-mO0"/>
                         <outlet property="phoneNumberTextField" destination="eSv-RD-Cbg" id="peB-rW-0mq"/>
+                        <outlet property="registerButton" destination="eXT-rD-qWP" id="Ko4-dI-fsp"/>
+                        <outlet property="switchToLoginButton" destination="cpa-cQ-5Ql" id="vR1-T8-Xx5"/>
                         <outlet property="usernameLabel" destination="VOl-32-Kvi" id="din-jF-cTI"/>
                         <outlet property="usernameTextField" destination="UzE-db-MBv" id="2E2-m2-dSl"/>
                     </connections>
@@ -221,16 +231,23 @@
                                     <action selector="switchToRegister:" destination="blm-YW-FOV" eventType="touchUpInside" id="YFw-sJ-5P7"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="5SX-he-1zC">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="5SX-he-1zC" firstAttribute="trailing" secondItem="cL8-Wn-nm3" secondAttribute="trailing" id="4ni-yB-dAh"/>
+                            <constraint firstItem="5SX-he-1zC" firstAttribute="leading" secondItem="cL8-Wn-nm3" secondAttribute="leading" id="9e8-xl-aM6"/>
                             <constraint firstItem="cL8-Wn-nm3" firstAttribute="trailing" secondItem="Oem-eR-NBo" secondAttribute="trailing" constant="8" id="Ewe-61-zUk"/>
                             <constraint firstItem="Oem-eR-NBo" firstAttribute="leading" secondItem="cL8-Wn-nm3" secondAttribute="leading" constant="8" id="O77-Nt-lN6"/>
                             <constraint firstItem="cL8-Wn-nm3" firstAttribute="trailing" secondItem="EaC-Ap-nwC" secondAttribute="trailing" constant="8" id="PUH-ZO-1x6"/>
+                            <constraint firstItem="5SX-he-1zC" firstAttribute="bottom" secondItem="cL8-Wn-nm3" secondAttribute="bottom" id="S1F-Mn-EDM"/>
                             <constraint firstItem="e9I-LN-T9p" firstAttribute="top" secondItem="cL8-Wn-nm3" secondAttribute="top" constant="62" id="T6A-cb-Z6p"/>
                             <constraint firstItem="Oem-eR-NBo" firstAttribute="top" secondItem="e9I-LN-T9p" secondAttribute="bottom" constant="161.5" id="Trx-5g-YCr"/>
                             <constraint firstItem="e9I-LN-T9p" firstAttribute="leading" secondItem="cL8-Wn-nm3" secondAttribute="leading" constant="8" id="Ybr-KM-h8S"/>
                             <constraint firstItem="EaC-Ap-nwC" firstAttribute="leading" secondItem="cL8-Wn-nm3" secondAttribute="leading" constant="8" id="eKX-qs-GHR"/>
+                            <constraint firstItem="5SX-he-1zC" firstAttribute="top" secondItem="cL8-Wn-nm3" secondAttribute="top" id="f0U-3D-Av5"/>
                             <constraint firstItem="cL8-Wn-nm3" firstAttribute="trailing" secondItem="e9I-LN-T9p" secondAttribute="trailing" constant="8" id="rUF-XR-9Ga"/>
                             <constraint firstItem="EaC-Ap-nwC" firstAttribute="top" secondItem="Oem-eR-NBo" secondAttribute="bottom" constant="60" id="reF-N0-T6l"/>
                         </constraints>
@@ -238,7 +255,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="ppI-V1-uUM"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5SX-he-1zC" id="1hI-Un-Gkj"/>
+                        <outlet property="loginButton" destination="EaC-Ap-nwC" id="vlp-E7-TS5"/>
                         <outlet property="passwordPasswordField" destination="jh9-Jw-sKA" id="ufM-Ar-MjF"/>
+                        <outlet property="switchToRegisterButton" destination="Wzl-P5-Dbg" id="jVC-2d-3HC"/>
                         <outlet property="usernameTextField" destination="9dR-Sg-hhC" id="nao-24-rMA"/>
                     </connections>
                 </viewController>
