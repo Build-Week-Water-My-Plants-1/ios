@@ -29,8 +29,6 @@
 		7F63660D24576C1F002D137D /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660B24576C1F002D137D /* PlantDetail.storyboard */; };
 		7F63660F24576C4E002D137D /* Login-Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660E24576C4E002D137D /* Login-Register.storyboard */; };
 		7F70972D2459546500881749 /* OxygenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70972C2459546500881749 /* OxygenTests.swift */; };
-		7F7097352459557600881749 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7097342459557600881749 /* UserController.swift */; };
-		7F7097372459558100881749 /* PlantController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7097362459558100881749 /* PlantController.swift */; };
 		7F7097392459559800881749 /* PlantControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7097382459559800881749 /* PlantControllerTests.swift */; };
 		7F70973B245955A900881749 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973A245955A900881749 /* UserControllerTests.swift */; };
 		7F70973D2459565700881749 /* BearerToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973C2459565700881749 /* BearerToken.swift */; };
@@ -128,12 +126,22 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		2BAC2FF62459F1BB002BD025 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				7F7097342459557600881749 /* UserController.swift */,
+				7F7097362459558100881749 /* PlantController.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		7F6365D92457574D002D137D = {
 			isa = PBXGroup;
 			children = (
 				7F6365E42457574E002D137D /* Oxygen */,
 				7F70972B2459546500881749 /* OxygenTests */,
 				7F6365E32457574D002D137D /* Products */,
+				2BAC2FF62459F1BB002BD025 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,9 +173,7 @@
 		7F6365F924575779002D137D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-
 				2BAC2FF12459D599002BD025 /* ApiController.swift */,
-
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -341,7 +347,6 @@
 				7F70973D2459565700881749 /* BearerToken.swift in Sources */,
 				7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */,
 				7F6365FE2457582B002D137D /* LoginViewController.swift in Sources */,
-				7F7097352459557600881749 /* UserController.swift in Sources */,
 				7F6366042457586C002D137D /* PlantsTableViewController.swift in Sources */,
 				7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */,
 				2BAC2FEC2458C90B002BD025 /* PlantRepresentation.swift in Sources */,
@@ -357,7 +362,6 @@
 				7F6366022457584E002D137D /* PlantDetailViewController.swift in Sources */,
 				2BAC2FEA2458C7E7002BD025 /* User+Convenience.swift in Sources */,
 				7F6366002457583E002D137D /* RegisterViewController.swift in Sources */,
-				7F7097372459558100881749 /* PlantController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

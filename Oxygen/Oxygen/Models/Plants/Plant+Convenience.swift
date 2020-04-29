@@ -19,7 +19,7 @@ extension Plant {
         return PlantRepresentation(id: id,
                                    commonName: commonName,
                                    scientificName: scientificName,
-                                   h2oFrequency: frequency)
+                                   h2oFrequency: h2oFrequency)
     }
     
     @discardableResult convenience init(id: UUID = UUID(),
@@ -32,7 +32,7 @@ extension Plant {
         self.id = id
         self.commonName = commonName
         self.scientificName = scientificName
-        self.frequency = frequency
+        self.h2oFrequency = frequency
         self.image = image
     }
     
