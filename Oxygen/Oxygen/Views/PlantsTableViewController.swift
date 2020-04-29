@@ -10,15 +10,25 @@ import UIKit
 
 class PlantsTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
+    var shouldPresentLoginViewController: Bool {
+        ApiController.bearer == nil
+    }
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let thisStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
-        let thisViewController = thisStoryboard.instantiateViewController(withIdentifier: "RegisterView")
-        thisViewController.modalPresentationStyle = .fullScreen
-        present(thisViewController, animated: true)
+        if shouldPresentLoginViewController {
+            let loginRegisterStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
+            let registerViewController = loginRegisterStoryboard.instantiateViewController(withIdentifier: "RegisterView")
+            registerViewController.modalPresentationStyle = .fullScreen
+            present(registerViewController, animated: true)
+        }
     }
 
     // MARK: - Table view data source

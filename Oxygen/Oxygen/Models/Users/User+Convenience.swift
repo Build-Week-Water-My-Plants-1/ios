@@ -23,7 +23,7 @@ extension User {
                                   phoneNumber: phoneNumber)
     }
     
-    @discardableResult convenience init(id: UUID = UUID(),
+    @discardableResult convenience init(id: String?,
                                         username: String,
                                         password: String,
                                         phoneNumber: String,
@@ -37,10 +37,12 @@ extension User {
     
     @discardableResult convenience init?(userRepresentation: UserRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+        guard let phoneNumber = userRepresentation.phoneNumber else { return nil }
+        
         self.init(id: userRepresentation.id,
                   username: userRepresentation.username,
                   password: userRepresentation.password,
-                  phoneNumber: userRepresentation.phoneNumber,
+                  phoneNumber: phoneNumber,
                   context: context)
     }
 }

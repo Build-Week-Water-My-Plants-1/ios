@@ -8,8 +8,9 @@
 
 import Foundation
 
-struct PlantRepresentation {
+struct PlantRepresentation: Codable {
     let id: UUID
     let commonName: String
     let scientificName: String
+    let h2oFrequency: Double
 }
