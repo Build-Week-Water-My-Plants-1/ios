@@ -18,13 +18,14 @@ extension Plant {
         
         return PlantRepresentation(id: id,
                                    commonName: commonName,
-                                   scientificName: scientificName)
+                                   scientificName: scientificName,
+                                   h2oFrequency: frequency)
     }
     
     @discardableResult convenience init(id: UUID = UUID(),
                                         commonName: String,
                                         scientificName: String,
-                                        frequency: String = "Once a day",
+                                        frequency: Double = 1.0,
                                         image: String?,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
@@ -40,7 +41,7 @@ extension Plant {
         self.init(id: plantRepresentation.id,
                   commonName: plantRepresentation.commonName,
                   scientificName: plantRepresentation.scientificName,
-                  frequency: "Once a day",
+                  frequency: plantRepresentation.h2oFrequency,
                   image: nil,
                   context: context)
     }
