@@ -11,7 +11,6 @@ import CoreData
 
 class PlantsTableViewController: UITableViewController {
     
-    
     // MARK: - Properties
     
     var shouldPresentLoginViewController: Bool {
@@ -33,7 +32,7 @@ class PlantsTableViewController: UITableViewController {
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,30 +60,65 @@ class PlantsTableViewController: UITableViewController {
             PlantTableViewCell else {
                 fatalError("Can't dequeue cell of type \(PlantTableViewCell())")
         }
-        //        cell.plant = fetchedResultsController.object(at: indexPath)
-        //        cell.user = fetchedResultsController.object(at: indexPath)
+        
+        cell.plant = fetchedResultsController.object(at: indexPath)
+        
         return cell
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            let plant = fetchedResultsController.object(at: indexPath)
-//            apiController.deletePlantFromServer(plant) { result in
-//                guard let _ = try? result.get() else {
-//                    return
-//                }
-//                DispatchQueue.main.async {
-//                    CoreDataStack.shared.mainContext.delete(movie)
-//                    do {
-//                        try CoreDataStack.shared.mainContext.save()
-//                    } catch {
-//                        CoreDataStack.shared.mainContext.reset()
-//                        NSLog("Error saving managed object context: \(error)")
-//                    }
-//                }
-//            }
-//        }
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let plant = fetchedResultsController.object(at: indexPath)
+            apiController.deletePlantFromServer(plant) { result in
+                guard let _ = try? result.get() else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    CoreDataStack.shared.mainContext.delete(plant)
+                    do {
+                        try CoreDataStack.shared.mainContext.save()
+                    } catch {
+                        CoreDataStack.shared.mainContext.reset()
+                        NSLog("Error saving managed object context: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreatePlantSegue" {
+            guard let createVC = segue.destination as? PlantDetailViewController else { return }
+            
+            createVC.apiController = apiController
+        } else if segue.identifier == "PlantDetailSegue" {
+            guard let detailVC = segue.destination as? PlantDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            detailVC.plant = fetchedResultsController.object(at: indexPath)
+            detailVC.apiController = apiController
+        }
+    }
+    
+    // MARK: - Core Data
+    
+    func clearData() {
+        let context = CoreDataStack.shared.mainContext
+        
+        do {
+            let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+            let allPlants = try context.fetch(fetchRequest)
+            for plant in allPlants {
+                let plantData: NSManagedObject = plant as NSManagedObject
+                context.delete(plantData)
+            }
+            try context.save()
+        } catch {
+            NSLog("Could not fetch plants.")
+        }
+    }
 }
 
 extension PlantsTableViewController: NSFetchedResultsControllerDelegate {

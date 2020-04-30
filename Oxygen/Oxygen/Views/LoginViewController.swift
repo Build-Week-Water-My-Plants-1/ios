@@ -54,11 +54,16 @@ class LoginViewController: UIViewController {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+                    self.apiController.fetchPlantsFromServer()
                 }
             case .failure(_):
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                NSLog("Failed to log in.")
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.loginButton.isEnabled = true
+                    self.switchToRegisterButton.isEnabled = true
+                    NSLog("Failed to log in.")
+                }
             }
         }
     }

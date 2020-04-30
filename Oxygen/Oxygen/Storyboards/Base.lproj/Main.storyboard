@@ -25,13 +25,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="GpV-Wt-bwA">
                                             <rect key="frame" x="20" y="11" width="374" height="21"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
                                                     <rect key="frame" x="0.0" y="0.0" width="252" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
                                                     <rect key="frame" x="320" y="0.0" width="54" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -63,7 +63,13 @@
                             <outlet property="delegate" destination="PtH-kl-NLi" id="dHy-in-JqA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0ym-rm-k5u"/>
+                    <navigationItem key="navigationItem" id="0ym-rm-k5u">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y4Z-Do-bG1">
+                            <connections>
+                                <segue destination="Ayj-yp-8pL" kind="show" identifier="CreatePlantSegue" id="N5r-we-l6k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="cKW-0n-8yK" kind="show" identifier="LoginViewSegue" id="B6F-n8-ICR"/>
                     </connections>
@@ -111,4 +117,7 @@
             <point key="canvasLocation" x="1929" y="-281"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="N5r-we-l6k"/>
+    </inferredMetricsTieBreakers>
 </document>

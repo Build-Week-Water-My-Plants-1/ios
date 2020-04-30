@@ -22,11 +22,11 @@ class PlantTableViewCell: UITableViewCell {
     
     //TODO: Uncomment for production & once CoreData is set.
     
-//    var plant: Plant? {
-//        didSet {
-//            updateViews()
-//        }
-//    }
+    var plant: Plant? {
+        didSet {
+            updateViews()
+        }
+    }
     
     //FIXME: Add a Water plants button on the cell if time permits
     
@@ -40,11 +40,12 @@ class PlantTableViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-//    func updateViews() {
-//        if let plant = plant {
-//            plantNameCLbl.text = plant.commonName
-//            plantSpeciesCLbl.text = plant.scientificName
-//        }
-//    }
+    
+    func updateViews() {
+        if let plant = plant {
+            plantNickname.text = plant.commonName
+            plantSpecies.text = plant.scientificName
+        }
+    }
 
 }
