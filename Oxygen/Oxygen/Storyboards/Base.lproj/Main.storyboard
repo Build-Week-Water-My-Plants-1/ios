@@ -64,6 +64,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0ym-rm-k5u">
+                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="39K-VJ-EcO">
+                            <connections>
+                                <action selector="signOut:" destination="PtH-kl-NLi" id="s44-9F-BUY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Y4Z-Do-bG1">
                             <connections>
                                 <segue destination="Ayj-yp-8pL" kind="show" identifier="CreatePlantSegue" id="N5r-we-l6k"/>
