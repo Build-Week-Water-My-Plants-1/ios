@@ -9,7 +9,20 @@
 import UIKit
 
 class RegisterViewController: UIViewController {
+    
+    // MARK: - Properties
+    
+    var apiController = ApiController()
+    
+    // MARK: - Activity Indicator
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
+    // MARK: - Buttons
+    
+    @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var switchToLoginButton: UIButton!
+    
     // MARK: - Labels
     
     @IBOutlet weak var createAccountLabel: UILabel!
@@ -36,12 +49,49 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        activityIndicator.isHidden = true
     }
     
     // MARK: - Actions
 
     @IBAction func registerAccount(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        guard let username = usernameTextField.text,
+            let phoneNumber = phoneNumberTextField.text,
+            passwordPasswordField.password == confirmPasswordPasswordField.password else { return }
+        
+        registerButton.isEnabled = false
+        switchToLoginButton.isEnabled = false
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        
+        let user = User(id: nil,
+                        username: username,
+                        password: passwordPasswordField.password,
+                        phoneNumber: phoneNumber)
+        
+        apiController.register(with: user) { result in
+            switch result {
+            case .success(_):
+                DispatchQueue.main.async{
+                    self.performSegue(withIdentifier: "ShowLoginSegue", sender: nil)
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                }
+            case .failure(_):
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.showAlert(title: "Failure", message: "Couldn't register new user.")
+                }
+            }
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true, completion: nil)
     }
 }

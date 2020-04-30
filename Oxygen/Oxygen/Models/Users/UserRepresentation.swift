@@ -9,8 +9,8 @@
 import Foundation
 
 struct UserRepresentation: Codable {
-    let id: String?
+    let id: Int?
     let username: String
-    let password: String
+    let password: String?
     let phoneNumber: String?
 }

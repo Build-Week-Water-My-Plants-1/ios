@@ -28,15 +28,17 @@
 		7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F636605245758D5002D137D /* PlantTableViewCell.swift */; };
 		7F63660D24576C1F002D137D /* PlantDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660B24576C1F002D137D /* PlantDetail.storyboard */; };
 		7F63660F24576C4E002D137D /* Login-Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F63660E24576C4E002D137D /* Login-Register.storyboard */; };
-		7F70972D2459546500881749 /* OxygenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70972C2459546500881749 /* OxygenTests.swift */; };
-		7F7097392459559800881749 /* PlantControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7097382459559800881749 /* PlantControllerTests.swift */; };
-		7F70973B245955A900881749 /* UserControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973A245955A900881749 /* UserControllerTests.swift */; };
-		7F70973D2459565700881749 /* BearerToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F70973C2459565700881749 /* BearerToken.swift */; };
 		7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA7280124579BC9003C7A18 /* PasswordField.swift */; };
+		7FEF3AEE245A8BA800A9B3BD /* OxygenUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AED245A8BA800A9B3BD /* OxygenUnitTests.swift */; };
+		7FEF3AF6245A958900A9B3BD /* MockDataLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AF5245A958900A9B3BD /* MockDataLoading.swift */; };
+		7FEF3AF9245A964800A9B3BD /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AF8245A964800A9B3BD /* NetworkDataLoader.swift */; };
+		7FEF3AFB245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AFA245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift */; };
+		7FEF3AFF245A9F5200A9B3BD /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AFE245A9F5200A9B3BD /* TestHelpers.swift */; };
+		7FEF3B03245AA45500A9B3BD /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7F70972F2459546500881749 /* PBXContainerItemProxy */ = {
+		7FEF3AF0245A8BA800A9B3BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F6365DA2457574D002D137D /* Project object */;
 			proxyType = 1;
@@ -53,7 +55,7 @@
 		2BAC2FE92458C7E7002BD025 /* User+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Convenience.swift"; sourceTree = "<group>"; };
 		2BAC2FEB2458C90B002BD025 /* PlantRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRepresentation.swift; sourceTree = "<group>"; };
 		2BAC2FED2458C916002BD025 /* UserRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepresentation.swift; sourceTree = "<group>"; };
-		2BAC2FF12459D599002BD025 /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		2BAC2FF12459D599002BD025 /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		2BAC2FF32459D64D002BD025 /* Oxygen 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Oxygen 2.xcdatamodel"; sourceTree = "<group>"; };
 		2BAC2FF42459D742002BD025 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
 		7F6365E22457574D002D137D /* Oxygen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxygen.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,15 +72,15 @@
 		7F636605245758D5002D137D /* PlantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTableViewCell.swift; sourceTree = "<group>"; };
 		7F63660C24576C1F002D137D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Oxygen/Storyboards/Base.lproj/PlantDetail.storyboard; sourceTree = "<group>"; };
 		7F63660E24576C4E002D137D /* Login-Register.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Login-Register.storyboard"; sourceTree = "<group>"; };
-		7F70972A2459546500881749 /* OxygenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxygenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F70972C2459546500881749 /* OxygenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenTests.swift; sourceTree = "<group>"; };
-		7F70972E2459546500881749 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7F7097342459557600881749 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
-		7F7097362459558100881749 /* PlantController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantController.swift; sourceTree = "<group>"; };
-		7F7097382459559800881749 /* PlantControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantControllerTests.swift; sourceTree = "<group>"; };
-		7F70973A245955A900881749 /* UserControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserControllerTests.swift; sourceTree = "<group>"; };
-		7F70973C2459565700881749 /* BearerToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BearerToken.swift; sourceTree = "<group>"; };
 		7FA7280124579BC9003C7A18 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		7FEF3AEB245A8BA800A9B3BD /* OxygenUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxygenUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FEF3AED245A8BA800A9B3BD /* OxygenUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenUnitTests.swift; sourceTree = "<group>"; };
+		7FEF3AEF245A8BA800A9B3BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7FEF3AF5245A958900A9B3BD /* MockDataLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoading.swift; sourceTree = "<group>"; };
+		7FEF3AF8245A964800A9B3BD /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
+		7FEF3AFA245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
+		7FEF3AFE245A9F5200A9B3BD /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
+		7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +91,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F7097272459546500881749 /* Frameworks */ = {
+		7FEF3AE8245A8BA800A9B3BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,22 +128,12 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
-		2BAC2FF62459F1BB002BD025 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				7F7097342459557600881749 /* UserController.swift */,
-				7F7097362459558100881749 /* PlantController.swift */,
-			);
-			name = "Recovered References";
-			sourceTree = "<group>";
-		};
 		7F6365D92457574D002D137D = {
 			isa = PBXGroup;
 			children = (
 				7F6365E42457574E002D137D /* Oxygen */,
-				7F70972B2459546500881749 /* OxygenTests */,
+				7FEF3AEC245A8BA800A9B3BD /* OxygenUnitTests */,
 				7F6365E32457574D002D137D /* Products */,
-				2BAC2FF62459F1BB002BD025 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -149,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				7F6365E22457574D002D137D /* Oxygen.app */,
-				7F70972A2459546500881749 /* OxygenTests.xctest */,
+				7FEF3AEB245A8BA800A9B3BD /* OxygenUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -157,6 +149,7 @@
 		7F6365E42457574E002D137D /* Oxygen */ = {
 			isa = PBXGroup;
 			children = (
+				7FEF3AF7245A95A400A9B3BD /* Mocking */,
 				7F6365FB24575783002D137D /* Models */,
 				7F6365FA2457577F002D137D /* Views */,
 				7F6365F924575779002D137D /* Controllers */,
@@ -198,7 +191,7 @@
 				2BAC2FF02458CB55002BD025 /* Users */,
 				2BAC2FE12458C3B7002BD025 /* CoreData */,
 				2B72E19C245759B000FF996C /* File.swift */,
-				7F70973C2459565700881749 /* BearerToken.swift */,
+				7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -215,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				7FA7280124579BC9003C7A18 /* PasswordField.swift */,
+				7FEF3AFE245A9F5200A9B3BD /* TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -230,15 +224,23 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		7F70972B2459546500881749 /* OxygenTests */ = {
+		7FEF3AEC245A8BA800A9B3BD /* OxygenUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				7F70972C2459546500881749 /* OxygenTests.swift */,
-				7F70972E2459546500881749 /* Info.plist */,
-				7F7097382459559800881749 /* PlantControllerTests.swift */,
-				7F70973A245955A900881749 /* UserControllerTests.swift */,
+				7FEF3AED245A8BA800A9B3BD /* OxygenUnitTests.swift */,
+				7FEF3AEF245A8BA800A9B3BD /* Info.plist */,
+				7FEF3AF5245A958900A9B3BD /* MockDataLoading.swift */,
 			);
-			path = OxygenTests;
+			path = OxygenUnitTests;
+			sourceTree = "<group>";
+		};
+		7FEF3AF7245A95A400A9B3BD /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				7FEF3AF8245A964800A9B3BD /* NetworkDataLoader.swift */,
+				7FEF3AFA245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift */,
+			);
+			path = Mocking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,22 +263,22 @@
 			productReference = 7F6365E22457574D002D137D /* Oxygen.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7F7097292459546500881749 /* OxygenTests */ = {
+		7FEF3AEA245A8BA800A9B3BD /* OxygenUnitTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F7097332459546500881749 /* Build configuration list for PBXNativeTarget "OxygenTests" */;
+			buildConfigurationList = 7FEF3AF4245A8BA800A9B3BD /* Build configuration list for PBXNativeTarget "OxygenUnitTests" */;
 			buildPhases = (
-				7F7097262459546500881749 /* Sources */,
-				7F7097272459546500881749 /* Frameworks */,
-				7F7097282459546500881749 /* Resources */,
+				7FEF3AE7245A8BA800A9B3BD /* Sources */,
+				7FEF3AE8245A8BA800A9B3BD /* Frameworks */,
+				7FEF3AE9245A8BA800A9B3BD /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7F7097302459546500881749 /* PBXTargetDependency */,
+				7FEF3AF1245A8BA800A9B3BD /* PBXTargetDependency */,
 			);
-			name = OxygenTests;
-			productName = OxygenTests;
-			productReference = 7F70972A2459546500881749 /* OxygenTests.xctest */;
+			name = OxygenUnitTests;
+			productName = OxygenUnitTests;
+			productReference = 7FEF3AEB245A8BA800A9B3BD /* OxygenUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -292,7 +294,7 @@
 					7F6365E12457574D002D137D = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
-					7F7097292459546500881749 = {
+					7FEF3AEA245A8BA800A9B3BD = {
 						CreatedOnToolsVersion = 11.4.1;
 						TestTargetID = 7F6365E12457574D002D137D;
 					};
@@ -312,7 +314,7 @@
 			projectRoot = "";
 			targets = (
 				7F6365E12457574D002D137D /* Oxygen */,
-				7F7097292459546500881749 /* OxygenTests */,
+				7FEF3AEA245A8BA800A9B3BD /* OxygenUnitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -330,7 +332,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F7097282459546500881749 /* Resources */ = {
+		7FEF3AE9245A8BA800A9B3BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -344,44 +346,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F70973D2459565700881749 /* BearerToken.swift in Sources */,
+				7FEF3B03245AA45500A9B3BD /* RegisterResult.swift in Sources */,
 				7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */,
 				7F6365FE2457582B002D137D /* LoginViewController.swift in Sources */,
 				7F6366042457586C002D137D /* PlantsTableViewController.swift in Sources */,
 				7F636606245758D5002D137D /* PlantTableViewCell.swift in Sources */,
 				2BAC2FEC2458C90B002BD025 /* PlantRepresentation.swift in Sources */,
+				7FEF3AF9245A964800A9B3BD /* NetworkDataLoader.swift in Sources */,
 				7F6365E62457574E002D137D /* AppDelegate.swift in Sources */,
 				7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */,
 				2BAC2FEE2458C916002BD025 /* UserRepresentation.swift in Sources */,
 				2BAC2FE62458C655002BD025 /* CoreDataStack.swift in Sources */,
 				2B72E19D245759B000FF996C /* File.swift in Sources */,
+				7FEF3AFF245A9F5200A9B3BD /* TestHelpers.swift in Sources */,
 				2BAC2FF52459D742002BD025 /* Bearer.swift in Sources */,
 				2BAC2FE42458C3C8002BD025 /* Oxygen.xcdatamodeld in Sources */,
 				2BAC2FE82458C6B1002BD025 /* Plant+Convenience.swift in Sources */,
 				2BAC2FF22459D599002BD025 /* ApiController.swift in Sources */,
 				7F6366022457584E002D137D /* PlantDetailViewController.swift in Sources */,
 				2BAC2FEA2458C7E7002BD025 /* User+Convenience.swift in Sources */,
+				7FEF3AFB245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift in Sources */,
 				7F6366002457583E002D137D /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		7F7097262459546500881749 /* Sources */ = {
+		7FEF3AE7245A8BA800A9B3BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F70972D2459546500881749 /* OxygenTests.swift in Sources */,
-				7F7097392459559800881749 /* PlantControllerTests.swift in Sources */,
-				7F70973B245955A900881749 /* UserControllerTests.swift in Sources */,
+				7FEF3AF6245A958900A9B3BD /* MockDataLoading.swift in Sources */,
+				7FEF3AEE245A8BA800A9B3BD /* OxygenUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7F7097302459546500881749 /* PBXTargetDependency */ = {
+		7FEF3AF1245A8BA800A9B3BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7F6365E12457574D002D137D /* Oxygen */;
-			targetProxy = 7F70972F2459546500881749 /* PBXContainerItemProxy */;
+			targetProxy = 7FEF3AF0245A8BA800A9B3BD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -563,19 +567,19 @@
 			};
 			name = Release;
 		};
-		7F7097312459546500881749 /* Debug */ = {
+		7FEF3AF2245A8BA800A9B3BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HL3XLM68NV;
-				INFOPLIST_FILE = OxygenTests/Info.plist;
+				INFOPLIST_FILE = OxygenUnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenTests;
+				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -583,19 +587,19 @@
 			};
 			name = Debug;
 		};
-		7F7097322459546500881749 /* Release */ = {
+		7FEF3AF3245A8BA800A9B3BD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = HL3XLM68NV;
-				INFOPLIST_FILE = OxygenTests/Info.plist;
+				INFOPLIST_FILE = OxygenUnitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenTests;
+				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenUnitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -624,11 +628,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7F7097332459546500881749 /* Build configuration list for PBXNativeTarget "OxygenTests" */ = {
+		7FEF3AF4245A8BA800A9B3BD /* Build configuration list for PBXNativeTarget "OxygenUnitTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7F7097312459546500881749 /* Debug */,
-				7F7097322459546500881749 /* Release */,
+				7FEF3AF2245A8BA800A9B3BD /* Debug */,
+				7FEF3AF3245A8BA800A9B3BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

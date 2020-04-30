@@ -10,25 +10,62 @@ import UIKit
 
 class PlantDetailViewController: UIViewController {
 
+    // MARK: - Outlets
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var plantNameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
     @IBOutlet weak var frequencyTextField: UITextField!
     
+    // MARK: - Properties
+    
+    var plant: Plant?
+    
+    var apiController: ApiController?
+    
+    // MARK: - View Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        plantNameTextField.text = plant?.commonName
+        speciesTextField.text = plant?.scientificName
+        frequencyTextField.text = String(plant?.h2oFrequency ?? 0)
     }
     
-
-  
+    // MARK: - Actions
+    
     @IBAction func savePlantButton(_ sender: Any) {
+        guard let commonName = plantNameTextField.text,
+            let scientificName = speciesTextField.text,
+            let frequency = frequencyTextField.text,
+            let doubleFrequency = Double(frequency) else { return }
+                
+        let plant = Plant(commonName: commonName, scientificName: scientificName, frequency: doubleFrequency, image: nil)
+        
+        do {
+            try CoreDataStack.shared.mainContext.save()
+        } catch {
+            NSLog("Error saving managed object context: \(error)")
+        }
+        navigationController?.dismiss(animated: true, completion: nil)
+        
+        apiController?.sendPlantToServer(plant: plant, completion: { result in
+            switch result {
+            case .success(_):
+                print("eggy")
+            case .failure(_):
+                print("weggy")
+            }
+        })
     }
     
     @IBAction func cancelButton(_ sender: Any) {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ImageButton(_ sender: Any) {
+        
     }
     
 }
