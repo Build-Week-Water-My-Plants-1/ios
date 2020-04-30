@@ -181,7 +181,7 @@ class ApiController {
                 return
             }
             do {
-                let plantRepresentations = Array(try JSONDecoder().decode([String : PlantRepresentation].self, from: data).values)
+                let plantRepresentations = try self.jsonDecoder.decode([PlantRepresentation].self, from: data)
                 try self.updatePlants(with: plantRepresentations)
                 completion(.success(true))
             } catch {
