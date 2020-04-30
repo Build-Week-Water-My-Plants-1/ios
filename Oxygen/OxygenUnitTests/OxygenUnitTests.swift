@@ -11,6 +11,7 @@ import XCTest
 
 class OxygenUnitTests: XCTestCase {
     
+    var bearer: Bearer?
     
 
     override func setUpWithError() throws {
@@ -58,7 +59,6 @@ class OxygenUnitTests: XCTestCase {
 //             XCTAssertGreaterThan(controller.searchResults.count, 0)
               expectation.fulfill()
           }
-          
           wait(for: [expectation], timeout: 5)
       }
     
@@ -66,7 +66,20 @@ class OxygenUnitTests: XCTestCase {
     
     func testPlantTableView() {
         let _ = PlantsTableViewController()
-        
     }
     
+    func testCreatingPlant(){
+          let controller = ApiController()
+        //  var plantRep: PlantRepresentation?
+          guard let newBearer = bearer else {return}
+          var plant: Plant?
+          guard let newPlant = plant else {return}
+          let resultsExpectation = expectation(description: "wait for results")
+        controller.sendPlantToServer(plant: newPlant) { (_ ) in
+            self.bearer = newBearer
+            resultsExpectation.fulfill()
+        }
+           wait(for: [resultsExpectation], timeout: 2)
+          XCTAssertNotNil(newBearer)
+      }
 }
