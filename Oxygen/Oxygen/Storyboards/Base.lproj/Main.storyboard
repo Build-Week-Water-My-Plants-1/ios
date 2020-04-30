@@ -16,44 +16,41 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" id="Y3J-Rl-sSQ" customClass="PlantTableViewCell" customModule="Oxygen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y3J-Rl-sSQ" id="Ngn-8O-RcO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="GpV-Wt-bwA">
-                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="252" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
-                                                    <rect key="frame" x="320" y="0.0" width="54" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20.5" id="LcU-0K-nhG"/>
-                                                <constraint firstAttribute="width" constant="203" id="wEL-nF-fwW"/>
-                                            </constraints>
-                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" fixedFrame="YES" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
+                                            <rect key="frame" x="20" y="22" width="197" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-SP-3cu">
+                                            <rect key="frame" x="315" y="0.0" width="79" height="43"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="UncoloredPlantUpset"/>
+                                            <state key="selected" image="ColoredPlant"/>
+                                            <connections>
+                                                <action selector="waterPlantButtonTapped:" destination="Y3J-Rl-sSQ" eventType="touchUpInside" id="89M-jc-1H3"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
+                                            <rect key="frame" x="20" y="0.0" width="197" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="GpV-Wt-bwA" firstAttribute="top" secondItem="Ngn-8O-RcO" secondAttribute="topMargin" id="2ck-Pg-E4Q"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="GpV-Wt-bwA" secondAttribute="trailing" id="4KS-yc-Zcp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="GpV-Wt-bwA" secondAttribute="bottom" id="G0k-9U-5S3"/>
-                                        <constraint firstItem="GpV-Wt-bwA" firstAttribute="leading" secondItem="Ngn-8O-RcO" secondAttribute="leadingMargin" id="YDw-ru-iSW"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="plantNickname" destination="bbY-8e-LPk" id="igC-X1-wWK"/>
                                     <outlet property="plantSpecies" destination="hgO-qS-y4R" id="bIK-4w-ed4"/>
+                                    <outlet property="plantWateredButton" destination="Hsk-SP-3cu" id="SaJ-O9-J9n"/>
                                     <segue destination="Ayj-yp-8pL" kind="show" identifier="PlantDetailSegue" id="GD1-lB-C9h"/>
                                 </connections>
                             </tableViewCell>
@@ -125,4 +122,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="N5r-we-l6k"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="ColoredPlant" width="256" height="256"/>
+        <image name="UncoloredPlantUpset" width="256" height="256"/>
+    </resources>
 </document>
