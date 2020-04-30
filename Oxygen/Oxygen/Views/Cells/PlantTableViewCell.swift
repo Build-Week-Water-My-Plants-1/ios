@@ -15,12 +15,6 @@ class PlantTableViewCell: UITableViewCell {
     @IBOutlet weak var plantNickname: UILabel!
     @IBOutlet weak var plantSpecies: UILabel!
      @IBOutlet weak var plantWateredButton: UIButton!
-    //let controller = controller.shared <------- SINGLETON
-    
-    
-    // This is using the core data stack reference(?) 👇
-    
-    //TODO: Uncomment for production & once CoreData is set.
     
     var plant: Plant? {
         didSet {
@@ -41,7 +35,6 @@ class PlantTableViewCell: UITableViewCell {
         
         var isPlantWatered: Bool = false
         
-        
         //MARK: Actions
         @IBAction func waterPlantButtonTapped(_ sender: UIButton) {
             isPlantWatered.toggle()
@@ -51,7 +44,8 @@ class PlantTableViewCell: UITableViewCell {
                 plantWateredButton.setImage(#imageLiteral(resourceName: "UncoloredPlantUpset.png") , for: .normal)
             } else if isPlantWatered {
                 plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .normal)
-            } 
+            }
+
     }
 
     override func awakeFromNib() {
