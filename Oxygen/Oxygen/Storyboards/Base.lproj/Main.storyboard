@@ -15,45 +15,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" id="Y3J-Rl-sSQ" customClass="PlantTableViewCell" customModule="Oxygen" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlantCell" rowHeight="57" id="Y3J-Rl-sSQ" customClass="PlantTableViewCell" customModule="Oxygen" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="57"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y3J-Rl-sSQ" id="Ngn-8O-RcO">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="57"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="GpV-Wt-bwA">
-                                            <rect key="frame" x="20" y="11" width="374" height="21"/>
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-SP-3cu">
+                                            <rect key="frame" x="353" y="0.0" width="45" height="57"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Hsk-SP-3cu" secondAttribute="height" multiplier="1:1" id="FdM-yr-sgj"/>
+                                                <constraint firstAttribute="width" constant="45" id="Pqn-Ke-lin"/>
+                                            </constraints>
+                                            <state key="normal" image="UncoloredPlantUpset"/>
+                                            <connections>
+                                                <action selector="waterPlantButtonTapped:" destination="Y3J-Rl-sSQ" eventType="touchUpInside" id="89M-jc-1H3"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="dc7-qz-Lq7">
+                                            <rect key="frame" x="8" y="0.0" width="345" height="57"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="252" height="21"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="345" height="26.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
-                                                    <rect key="frame" x="320" y="0.0" width="54" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <rect key="frame" x="0.0" y="30.5" width="345" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20.5" id="LcU-0K-nhG"/>
-                                                <constraint firstAttribute="width" constant="203" id="wEL-nF-fwW"/>
-                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="GpV-Wt-bwA" firstAttribute="top" secondItem="Ngn-8O-RcO" secondAttribute="topMargin" id="2ck-Pg-E4Q"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="GpV-Wt-bwA" secondAttribute="trailing" id="4KS-yc-Zcp"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="GpV-Wt-bwA" secondAttribute="bottom" id="G0k-9U-5S3"/>
-                                        <constraint firstItem="GpV-Wt-bwA" firstAttribute="leading" secondItem="Ngn-8O-RcO" secondAttribute="leadingMargin" id="YDw-ru-iSW"/>
+                                        <constraint firstAttribute="trailing" secondItem="Hsk-SP-3cu" secondAttribute="trailing" constant="16" id="3YO-PK-zCk"/>
+                                        <constraint firstAttribute="bottom" secondItem="Hsk-SP-3cu" secondAttribute="bottom" id="EBe-BP-8n2"/>
+                                        <constraint firstItem="Hsk-SP-3cu" firstAttribute="leading" secondItem="dc7-qz-Lq7" secondAttribute="trailing" id="HB5-eJ-qhW"/>
+                                        <constraint firstItem="dc7-qz-Lq7" firstAttribute="leading" secondItem="Ngn-8O-RcO" secondAttribute="leading" constant="8" id="JQ2-LA-NwT"/>
+                                        <constraint firstItem="Hsk-SP-3cu" firstAttribute="top" secondItem="Ngn-8O-RcO" secondAttribute="top" id="Jwc-uA-XzV"/>
+                                        <constraint firstItem="dc7-qz-Lq7" firstAttribute="top" secondItem="Ngn-8O-RcO" secondAttribute="top" id="KoI-bl-Boq"/>
+                                        <constraint firstAttribute="bottom" secondItem="dc7-qz-Lq7" secondAttribute="bottom" id="MEx-G1-CK4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="plantNickname" destination="bbY-8e-LPk" id="igC-X1-wWK"/>
                                     <outlet property="plantSpecies" destination="hgO-qS-y4R" id="bIK-4w-ed4"/>
+                                    <outlet property="plantWateredButton" destination="Hsk-SP-3cu" id="SaJ-O9-J9n"/>
                                     <segue destination="Ayj-yp-8pL" kind="show" identifier="PlantDetailSegue" id="GD1-lB-C9h"/>
                                 </connections>
                             </tableViewCell>
@@ -125,4 +136,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="N5r-we-l6k"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="UncoloredPlantUpset" width="256" height="256"/>
+    </resources>
 </document>
