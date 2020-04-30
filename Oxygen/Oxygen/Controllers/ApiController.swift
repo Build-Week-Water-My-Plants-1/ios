@@ -290,7 +290,7 @@ class ApiController {
         do {
             let existingPlants = try context.fetch(fetchRequest)
             
-            for movie in existingPlants {
+            for plant in existingPlants {
                 guard let id = plant.id,
                     let representation = representationsByID[id] else { continue }
                 self.update(plant: Plant, with: representation)
