@@ -51,7 +51,7 @@ class PlantTableViewCell: UITableViewCell {
                 plantWateredButton.setImage(#imageLiteral(resourceName: "UncoloredPlantUpset.png") , for: .normal)
             } else if isPlantWatered == isHighlighted {
                 plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .highlighted)
-            } else if isPlantWatered == isSelected {
+            } else if isPlantWatered == isSelected { 
                 plantWateredButton.setImage( #imageLiteral(resourceName: "ColoredPlant.png") , for: .selected)
             }
     }
