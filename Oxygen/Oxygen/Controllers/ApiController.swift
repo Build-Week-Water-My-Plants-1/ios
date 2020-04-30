@@ -30,6 +30,10 @@ class ApiController {
         case notSignedIn
         case failedFetch
         case otherError
+        case noIdentifier
+        case noDecode
+        case noEncode
+        case noRep
     }
     
     private enum LoginStatus {
@@ -81,21 +85,21 @@ class ApiController {
                     NSLog("Register failed with error: \(error.localizedDescription)")
                     return completion(.failure(.failedRegister))
                 }
-
+                
                 guard let response = response as? HTTPURLResponse else { return }
                 
                 if response.statusCode != 200 {
                     NSLog("Response from server was bad: \(response)")
                     return completion(.failure(.failedRegister))
                 }
-
+                
                 guard let data = data else {
                     NSLog("No data was returned from server.")
                     return completion(.failure(.noData))
                 }
-
+                
                 let context = CoreDataStack.shared.container.newBackgroundContext()
-
+                
                 context.perform {
                     do {
                         let userRepresentation = try self.jsonDecoder.decode(UserRepresentation.self, from: data)
@@ -159,7 +163,149 @@ class ApiController {
     
     // MARK: - Plant Api
     
+    
+    // POST
+    func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        let requestURL = baseURL.appendingPathExtension("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { data, response, error in
+            if let error = error {
+                NSLog("Error fetching plants: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from fetch")
+                completion(.failure(.noData))
+                return
+            }
+            do {
+                let plantRepresentations = Array(try JSONDecoder().decode([String : PlantRepresentation].self, from: data).values)
+                try self.updatePlants(with: plantRepresentations)
+                completion(.success(true))
+            } catch {
+                NSLog("Error decoding plants from server: \(error)")
+                completion(.failure(.noDecode))
+            }
+        }
+    }
+    
+    // GET (Read)
+    func getPlantNames(completion: @escaping CompletionHandler = { _ in }) {
+        let requestURL = baseURL.appendingPathComponent("json")
+        
+        URLSession.shared.dataTask(with: requestURL) { data, response, error in
+            if let error = error {
+                NSLog("Error fetching plants: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            guard let data = data else {
+                NSLog("No data returned from fetch")
+                completion(.failure(.noData))
+                return
+            }
+            
+            do {
+                let plantRepresentations = Array(try JSONDecoder().decode([String : PlantRepresentation].self, from: data).values)
+                try self.updatePlants(with: plantRepresentations)
+                completion(.success(true))
+            } catch {
+                NSLog("Error decoding plants from server: \(error)")
+                completion(.failure(.noData))
+            }
+        }
+    }
+    
+    
+    // PUT
+    func sendPlantToServer(plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
+        guard let uuid = plant.id else {
+            completion(.failure(.noIdentifier))
+            return
+        }
+        
+        let requestURL = baseURL.appendingPathComponent(uuid).appendingPathExtension("json")
+        var request = URLRequest(url: baseURL)
+        request.httpMethod = "PUT"
+        
+        do {
+            guard let representation = plant.plantRepresentation else {
+                completion(.failure(.noRep))
+                return
+            }
+            request.httpBody = try JSONEncoder().encode(representation)
+        } catch {
+            NSLog("Error encoding plant \(plant): \(error)")
+            completion(.failure(.noEncode))
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error sending plant to server: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            completion(.success(true))
+        }.resume()
+    }
+    
+    // DELETE
+    func deletePlantFromServer(_ plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
+        guard let identifer = plant.id else {
+            completion(.failure(.noIdentifier))
+            return
+        }
+        let requestURL = baseURL.appendingPathComponent(identifer).appendingPathExtension("json")
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = "DELETE"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                NSLog("Error deleting plant from server: \(error)")
+                completion(.failure(.otherError))
+                return
+            }
+            
+            completion(.success(true))
+        }.resume()
+    }
+    
     // MARK: - Helper Methods
+    
+    private func updatePlants(with representations: [PlantRepresentation]) throws {
+        let identifiersToFetch = representations.compactMap { UUID(uuidString: $0.identifier!) }
+        let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
+        var moviesToCreate = representationsByID
+        
+        let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
+        
+        let context = CoreDataStack.shared.mainContext
+        
+        do {
+            let existingPlants = try context.fetch(fetchRequest)
+            
+            for movie in existingPlants {
+                guard let id = plant.id,
+                    let representation = representationsByID[id] else { continue }
+                self.update(plant: Plant, with: representation)
+                moviesToCreate.removeValue(forKey: id)
+            }
+            
+            for representation in moviesToCreate.values {
+                Movie(movieRepresentation: representation)
+            }
+        } catch {
+            NSLog("Error fetching tasks with UUIDs: \(identifiersToFetch), with error: \(error)")
+        }
+        
+        try CoreDataStack.shared.mainContext.save()
+    }
     
     private func updateUser(user: User, userRepresentation: UserRepresentation) {
         guard let id = userRepresentation.id else { return }

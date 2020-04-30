@@ -11,7 +11,6 @@ import CoreData
 
 class PlantsTableViewController: UITableViewController {
     
-    
     // MARK: - Properties
     
     var shouldPresentLoginViewController: Bool {
