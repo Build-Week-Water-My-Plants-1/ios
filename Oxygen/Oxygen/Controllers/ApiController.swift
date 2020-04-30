@@ -48,13 +48,7 @@ class ApiController {
             }
         }
     }
-    
-    // MARK: - Init
-    
-    init() {
-        fetchPlantsFromServer()
-    }
-    
+        
     // MARK: - Properties
     
     static var bearer: Bearer?
@@ -296,7 +290,7 @@ class ApiController {
         var plantsToCreate = representationsByID
         
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
+        fetchRequest.predicate = NSPredicate(format: "id IN %@", identifiersToFetch)
         
         let context = CoreDataStack.shared.mainContext
         

@@ -101,6 +101,24 @@ class PlantsTableViewController: UITableViewController {
             detailVC.apiController = apiController
         }
     }
+    
+    // MARK: - Core Data
+    
+    func clearData() {
+        let context = CoreDataStack.shared.mainContext
+        
+        do {
+            let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
+            let allPlants = try context.fetch(fetchRequest)
+            for plant in allPlants {
+                let plantData: NSManagedObject = plant as NSManagedObject
+                context.delete(plantData)
+            }
+            try context.save()
+        } catch {
+            NSLog("Could not fetch plants.")
+        }
+    }
 }
 
 extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
