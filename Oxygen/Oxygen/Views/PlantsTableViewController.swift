@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class PlantsTableViewController: UITableViewController {
-    
+     
     // MARK: - Properties
     
     var shouldPresentLoginViewController: Bool {
@@ -37,10 +37,7 @@ class PlantsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         if shouldPresentLoginViewController {
-            let loginRegisterStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
-            let registerViewController = loginRegisterStoryboard.instantiateViewController(withIdentifier: "RegisterView")
-            registerViewController.modalPresentationStyle = .fullScreen
-            present(registerViewController, animated: true)
+            presentRegisterView()
         }
     }
     
@@ -102,6 +99,17 @@ class PlantsTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Actions
+    
+    @IBAction func signOut(_ sender: Any) {
+        // Clear everything
+        self.clearData()
+        ApiController.bearer = nil
+        
+        // Move the user back to the register page
+        self.presentRegisterView()
+    }
+    
     // MARK: - Core Data
     
     func clearData() {
@@ -118,6 +126,15 @@ class PlantsTableViewController: UITableViewController {
         } catch {
             NSLog("Could not fetch plants.")
         }
+    }
+    
+    // MARK: - Private Functions
+    
+    private func presentRegisterView() {
+        let loginRegisterStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
+        let registerViewController = loginRegisterStoryboard.instantiateViewController(withIdentifier: "RegisterView")
+        registerViewController.modalPresentationStyle = .fullScreen
+        present(registerViewController, animated: true)
     }
 }
 
