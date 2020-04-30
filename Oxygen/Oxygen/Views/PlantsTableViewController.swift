@@ -101,7 +101,7 @@ class PlantsTableViewController: UITableViewController {
             detailVC.apiController = apiController
         }
     }
-    
+        
     // MARK: - Core Data
     
     func clearData() {
