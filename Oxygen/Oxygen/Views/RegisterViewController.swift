@@ -78,9 +78,11 @@ class RegisterViewController: UIViewController {
                     self.activityIndicator.isHidden = true
                 }
             case .failure(_):
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                self.showAlert(title: "Failure", message: "Couldn't register new user.")
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.showAlert(title: "Failure", message: "Couldn't register new user.")
+                }
             }
         }
     }

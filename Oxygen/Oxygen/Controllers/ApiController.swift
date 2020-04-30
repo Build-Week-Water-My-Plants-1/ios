@@ -49,6 +49,12 @@ class ApiController {
         }
     }
     
+    // MARK: - Init
+    
+    init() {
+        fetchPlantsFromServer()
+    }
+    
     // MARK: - Properties
     
     static var bearer: Bearer?
@@ -145,7 +151,6 @@ class ApiController {
                     NSLog("No data was returned from server.")
                     return completion(.failure(.noData))
                 }
-                
                 do {
                     Self.bearer = try self.jsonDecoder.decode(Bearer.self, from: data)
                     completion(.success(true))
@@ -162,13 +167,18 @@ class ApiController {
     }
     
     // MARK: - Plant Api
-    
-    
-    // POST
-    func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
-        let requestURL = baseURL.appendingPathExtension("json")
         
-        URLSession.shared.dataTask(with: requestURL) { data, response, error in
+    func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
+        guard case let .LoggedIn(bearer) = LoginStatus.isLoggedIn else {
+            NSLog("User not logged in")
+            return completion(.failure(.notSignedIn))
+        }
+        let requestURL = baseURL.appendingPathComponent("/\(bearer.id)/plants")
+        var request = URLRequest(url: requestURL)
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("\(bearer.token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 NSLog("Error fetching plants: \(error)")
                 completion(.failure(.otherError))
@@ -189,6 +199,7 @@ class ApiController {
                 completion(.failure(.noDecode))
             }
         }
+        .resume()
     }
     
     // GET (Read)
@@ -222,13 +233,15 @@ class ApiController {
     
     // PUT
     func sendPlantToServer(plant: Plant, completion: @escaping CompletionHandler = { _ in }) {
-        guard let uuid = plant.id else {
+        guard let uuid = plant.id,
+            case let .LoggedIn(bearer) = LoginStatus.isLoggedIn else {
             completion(.failure(.noIdentifier))
             return
         }
         
-        let requestURL = baseURL.appendingPathComponent(uuid).appendingPathExtension("json")
-        var request = URLRequest(url: baseURL)
+        let requestURL = baseURL.appendingPathComponent("/\(bearer.id)/plants/\(uuid)")
+        var request = URLRequest(url: requestURL)
+        request.addValue("Bearer \(bearer.token)", forHTTPHeaderField: "Authorization")
         request.httpMethod = "PUT"
         
         do {
@@ -236,7 +249,7 @@ class ApiController {
                 completion(.failure(.noRep))
                 return
             }
-            request.httpBody = try JSONEncoder().encode(representation)
+            request.httpBody = try jsonEncoder.encode(representation)
         } catch {
             NSLog("Error encoding plant \(plant): \(error)")
             completion(.failure(.noEncode))
@@ -278,9 +291,9 @@ class ApiController {
     // MARK: - Helper Methods
     
     private func updatePlants(with representations: [PlantRepresentation]) throws {
-        let identifiersToFetch = representations.compactMap { UUID(uuidString: $0.identifier!) }
+        let identifiersToFetch = representations.compactMap { $0.id }
         let representationsByID = Dictionary(uniqueKeysWithValues: zip(identifiersToFetch, representations))
-        var moviesToCreate = representationsByID
+        var plantsToCreate = representationsByID
         
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "identifier IN %@", identifiersToFetch)
@@ -293,18 +306,25 @@ class ApiController {
             for plant in existingPlants {
                 guard let id = plant.id,
                     let representation = representationsByID[id] else { continue }
-                self.update(plant: Plant, with: representation)
-                moviesToCreate.removeValue(forKey: id)
+                self.updatePlant(plant: plant, plantRepresentation: representation)
+                plantsToCreate.removeValue(forKey: id)
             }
             
-            for representation in moviesToCreate.values {
-                Movie(movieRepresentation: representation)
+            for representation in plantsToCreate.values {
+                Plant(plantRepresentation: representation)
             }
         } catch {
             NSLog("Error fetching tasks with UUIDs: \(identifiersToFetch), with error: \(error)")
         }
         
         try CoreDataStack.shared.mainContext.save()
+    }
+    
+    private func updatePlant(plant: Plant, plantRepresentation: PlantRepresentation) {
+        plant.id = plantRepresentation.id
+        plant.commonName = plantRepresentation.commonName
+        plant.scientificName = plantRepresentation.scientificName
+        plant.h2oFrequency = plantRepresentation.h2oFrequency
     }
     
     private func updateUser(user: User, userRepresentation: UserRepresentation) {

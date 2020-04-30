@@ -32,7 +32,7 @@ class PlantsTableViewController: UITableViewController {
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad()        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,8 +60,9 @@ class PlantsTableViewController: UITableViewController {
             PlantTableViewCell else {
                 fatalError("Can't dequeue cell of type \(PlantTableViewCell())")
         }
-//               cell.plant = fetchedResultsController.object(at: indexPath)
-//                cell.user = fetchedResultsController.object(at: indexPath)
+        
+        cell.plant = fetchedResultsController.object(at: indexPath)
+        
         return cell
     }
     
@@ -82,6 +83,22 @@ class PlantsTableViewController: UITableViewController {
                     }
                 }
             }
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreatePlantSegue" {
+            guard let createVC = segue.destination as? PlantDetailViewController else { return }
+            
+            createVC.apiController = apiController
+        } else if segue.identifier == "PlantDetailSegue" {
+            guard let detailVC = segue.destination as? PlantDetailViewController,
+                let indexPath = tableView.indexPathForSelectedRow else { return }
+            
+            detailVC.plant = fetchedResultsController.object(at: indexPath)
+            detailVC.apiController = apiController
         }
     }
 }
