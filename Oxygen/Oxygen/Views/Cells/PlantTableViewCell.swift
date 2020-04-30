@@ -44,16 +44,14 @@ class PlantTableViewCell: UITableViewCell {
         
         //MARK: Actions
         @IBAction func waterPlantButtonTapped(_ sender: UIButton) {
-    //        sender.isSelected.toggle()
+            isPlantWatered.toggle()
             
             
             if isPlantWatered == false {
                 plantWateredButton.setImage(#imageLiteral(resourceName: "UncoloredPlantUpset.png") , for: .normal)
-            } else if isPlantWatered == isHighlighted {
-                plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .highlighted)
-            } else if isPlantWatered == isSelected { 
-                plantWateredButton.setImage( #imageLiteral(resourceName: "ColoredPlant.png") , for: .selected)
-            }
+            } else if isPlantWatered {
+                plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .normal)
+            } 
     }
 
     override func awakeFromNib() {

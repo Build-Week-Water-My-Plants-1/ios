@@ -33,7 +33,6 @@
                                             <rect key="frame" x="315" y="0.0" width="79" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="UncoloredPlantUpset"/>
-                                            <state key="selected" image="ColoredPlant"/>
                                             <connections>
                                                 <action selector="waterPlantButtonTapped:" destination="Y3J-Rl-sSQ" eventType="touchUpInside" id="89M-jc-1H3"/>
                                             </connections>
@@ -123,7 +122,6 @@
         <segue reference="N5r-we-l6k"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="ColoredPlant" width="256" height="256"/>
         <image name="UncoloredPlantUpset" width="256" height="256"/>
     </resources>
 </document>
