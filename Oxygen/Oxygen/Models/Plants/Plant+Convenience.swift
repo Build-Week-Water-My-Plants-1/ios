@@ -14,9 +14,10 @@ extension Plant {
     var plantRepresentation: PlantRepresentation? {
         guard let id = id,
             let commonName = commonName,
-            let scientificName = scientificName else { return nil }
+            let scientificName = scientificName,
+            let idInt = Int(id) else { return nil }
         
-        return PlantRepresentation(id: id,
+        return PlantRepresentation(id: idInt,
                                    commonName: commonName,
                                    scientificName: scientificName,
                                    h2oFrequency: h2oFrequency)
@@ -38,7 +39,7 @@ extension Plant {
     
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
-        self.init(id: plantRepresentation.id,
+        self.init(id: plantRepresentation.idString,
                   commonName: plantRepresentation.commonName,
                   scientificName: plantRepresentation.scientificName,
                   frequency: plantRepresentation.h2oFrequency,

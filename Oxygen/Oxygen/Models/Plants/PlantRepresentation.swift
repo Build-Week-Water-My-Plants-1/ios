@@ -9,7 +9,7 @@
 import Foundation
 
 struct PlantRepresentation: Codable {
-    let id: String
+    let id: Int
     let commonName: String
     let scientificName: String
     let h2oFrequency: Double
@@ -18,4 +18,3 @@ struct PlantRepresentation: Codable {
         return String(id)
     }
 }
-

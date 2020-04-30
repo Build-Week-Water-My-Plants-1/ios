@@ -305,9 +305,10 @@ class ApiController {
             
             for plant in existingPlants {
                 guard let id = plant.id,
-                    let representation = representationsByID[id] else { continue }
+                    let idInt = Int(id),
+                    let representation = representationsByID[idInt] else { continue }
                 self.updatePlant(plant: plant, plantRepresentation: representation)
-                plantsToCreate.removeValue(forKey: id)
+                plantsToCreate.removeValue(forKey: idInt)
             }
             
             for representation in plantsToCreate.values {
@@ -321,7 +322,7 @@ class ApiController {
     }
     
     private func updatePlant(plant: Plant, plantRepresentation: PlantRepresentation) {
-        plant.id = plantRepresentation.id
+        plant.id = plantRepresentation.idString
         plant.commonName = plantRepresentation.commonName
         plant.scientificName = plantRepresentation.scientificName
         plant.h2oFrequency = plantRepresentation.h2oFrequency
