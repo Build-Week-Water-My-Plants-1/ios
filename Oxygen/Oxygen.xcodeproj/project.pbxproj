@@ -34,7 +34,6 @@
 		7FEF3AF9245A964800A9B3BD /* NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AF8245A964800A9B3BD /* NetworkDataLoader.swift */; };
 		7FEF3AFB245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AFA245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift */; };
 		7FEF3AFF245A9F5200A9B3BD /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3AFE245A9F5200A9B3BD /* TestHelpers.swift */; };
-		7FEF3B03245AA45500A9B3BD /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,7 +79,6 @@
 		7FEF3AF8245A964800A9B3BD /* NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataLoader.swift; sourceTree = "<group>"; };
 		7FEF3AFA245A967E00A9B3BD /* URLSession+NetworkDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+NetworkDataLoader.swift"; sourceTree = "<group>"; };
 		7FEF3AFE245A9F5200A9B3BD /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
-		7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,7 +189,6 @@
 				2BAC2FF02458CB55002BD025 /* Users */,
 				2BAC2FE12458C3B7002BD025 /* CoreData */,
 				2B72E19C245759B000FF996C /* File.swift */,
-				7FEF3B02245AA45500A9B3BD /* RegisterResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -346,7 +343,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FEF3B03245AA45500A9B3BD /* RegisterResult.swift in Sources */,
 				7FA7280224579BC9003C7A18 /* PasswordField.swift in Sources */,
 				7F6365FE2457582B002D137D /* LoginViewController.swift in Sources */,
 				7F6366042457586C002D137D /* PlantsTableViewController.swift in Sources */,
