@@ -124,6 +124,7 @@
                                 </state>
                                 <connections>
                                     <action selector="savePlantButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="ACW-4T-pA0"/>
+                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="YId-6g-fQz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6T-za-t4q">
@@ -140,10 +141,13 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="ID0-ha-1Wf"/>
-                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="unwindToTable:" id="veh-Os-Qhz"/>
+                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="wyg-AK-Z56"/>
                                 </connections>
                             </button>
+                            <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWw-jq-DJW">
+                                <rect key="frame" x="0.0" y="680" width="414" height="216"/>
+                                <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -161,12 +165,15 @@
                             <constraint firstItem="E6T-za-t4q" firstAttribute="leading" secondItem="K6q-zY-ZGj" secondAttribute="leading" id="fOf-vB-Sh5"/>
                             <constraint firstItem="aQn-QW-uuh" firstAttribute="top" secondItem="K6q-zY-ZGj" secondAttribute="top" id="gC0-s1-avf"/>
                             <constraint firstItem="E6T-za-t4q" firstAttribute="height" secondItem="LrM-ms-kkV" secondAttribute="height" multiplier="0.3" id="lLI-yM-BL0"/>
+                            <constraint firstItem="GWw-jq-DJW" firstAttribute="leading" secondItem="K6q-zY-ZGj" secondAttribute="leading" id="nhm-mL-Vb6"/>
                             <constraint firstItem="IlB-Fp-c83" firstAttribute="leading" secondItem="K6q-zY-ZGj" secondAttribute="leading" constant="8" id="nj5-LY-sgu"/>
                             <constraint firstItem="K6q-zY-ZGj" firstAttribute="trailing" secondItem="aQn-QW-uuh" secondAttribute="trailing" id="ntQ-Q2-398"/>
                             <constraint firstItem="rhr-aR-yLA" firstAttribute="leading" secondItem="K6q-zY-ZGj" secondAttribute="leading" id="os6-aE-11w"/>
+                            <constraint firstAttribute="bottom" secondItem="GWw-jq-DJW" secondAttribute="bottom" id="p0G-cR-6sh"/>
                             <constraint firstItem="K6q-zY-ZGj" firstAttribute="trailing" secondItem="rhr-aR-yLA" secondAttribute="trailing" id="p8b-57-yBz"/>
                             <constraint firstItem="E6T-za-t4q" firstAttribute="top" secondItem="K6q-zY-ZGj" secondAttribute="top" id="qzP-61-mZw"/>
                             <constraint firstItem="qLu-4p-gGA" firstAttribute="leading" secondItem="LrM-ms-kkV" secondAttribute="leading" id="wEG-Ds-t8Y"/>
+                            <constraint firstItem="GWw-jq-DJW" firstAttribute="trailing" secondItem="K6q-zY-ZGj" secondAttribute="trailing" id="xWk-KX-OOR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6q-zY-ZGj"/>
                     </view>
@@ -174,6 +181,7 @@
                     <connections>
                         <outlet property="frequencyTextField" destination="cbX-aP-R1u" id="waO-LP-Ygg"/>
                         <outlet property="imageView" destination="aQn-QW-uuh" id="wGO-M3-vPL"/>
+                        <outlet property="pickerView" destination="GWw-jq-DJW" id="7PH-n4-cm0"/>
                         <outlet property="plantNameTextField" destination="Aqo-iL-dCG" id="ota-6m-MTe"/>
                         <outlet property="speciesTextField" destination="ydB-ac-kvu" id="qVL-QV-fip"/>
                     </connections>
