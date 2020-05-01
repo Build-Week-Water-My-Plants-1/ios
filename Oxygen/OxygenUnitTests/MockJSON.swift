@@ -7,7 +7,7 @@
 //
 
 import Foundation
-let goodResultData = """
+let goodResultPlantData = """
 [
     {
         "id": 21,
@@ -30,7 +30,7 @@ let goodResultData = """
 ]
 """.data(using: .utf8)!
 
-let badResultData = """
+let badResultPlantData = """
 [
     {
         "id": 21,

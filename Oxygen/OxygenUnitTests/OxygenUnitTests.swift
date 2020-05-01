@@ -10,9 +10,35 @@ import XCTest
 @testable import Oxygen
 
 class OxygenUnitTests: XCTestCase {
-        //MARK: - Singletons -
+        //MARK: - Properties -
     var bearer: Bearer?
     var user: User?
+    
+    enum NetworkError: Error {
+        case failedRegister
+        case failedLogin
+        case noData
+        case notSignedIn
+        case failedFetch
+        case otherError
+        case noIdentifier
+        case noDecode
+        case noEncode
+        case noRep
+    }
+    
+    private enum LoginStatus {
+        case notLoggedIn
+        case LoggedIn(Bearer)
+        
+        static var isLoggedIn: Self {
+            if let bearer = ApiController.bearer {
+                return LoggedIn(bearer)
+            } else {
+                return notLoggedIn
+            }
+        }
+    }
 
     //MARK: User Tests
     
@@ -35,7 +61,7 @@ class OxygenUnitTests: XCTestCase {
         
     }
     
-    
+
     func testForLoginResults() {
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController()
@@ -97,13 +123,17 @@ class OxygenUnitTests: XCTestCase {
     //MARK: JSON Testing
     //TODO: Implement the searchresults structure to be able to conform to the data loading and create a mock request using the JSON provided in the MockJSON
     func testValidData() {
-        let mockDataLoader = MockDataLoader(data: goodResultData, response: nil, error: nil)
+        let mockDataLoader = MockDataLoader(data: goodResultPlantData, response: nil, error: nil)
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController(dataLoader: mockDataLoader)
         controller.fetchPlantsFromServer { (_ ) in
             //MARK: Fetching broken due to Backend Errors.
+            
+            
+            
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
     }
+
 }
