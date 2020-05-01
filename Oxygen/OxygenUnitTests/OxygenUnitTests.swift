@@ -12,6 +12,7 @@ import XCTest
 class OxygenUnitTests: XCTestCase {
         //MARK: - Singletons -
     var bearer: Bearer?
+    var user: User?
 
     //MARK: User Tests
     
@@ -80,7 +81,16 @@ class OxygenUnitTests: XCTestCase {
     }
     
     func testUserRegister() {
-        
+//        let user = User(id: "239847234234", username: "RegisterTesterDELETEME", password: "RegisterTesterDELETEME", phoneNumber: "555-555-5123")
+        guard let newUser = user else {return}
+        let expectation = self.expectation(description: "Wait for Register")
+        let controller = ApiController(dataLoader: URLSession(configuration: .ephemeral))
+        controller.register(with: newUser) { (_ ) in
+            self.user = newUser
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
+        XCTAssertNotNil(newUser)
     }
     
     
