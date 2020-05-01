@@ -43,6 +43,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="common name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-iL-dCG">
                                                         <rect key="frame" x="0.0" y="0.0" width="323.5" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.PlantNameLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -71,6 +72,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="scientific name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydB-ac-kvu">
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.SpeciesNameLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -99,6 +101,7 @@
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="watering frequency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-aP-R1u">
                                                         <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.WaterFrequencyLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
@@ -118,6 +121,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-aR-yLA">
                                 <rect key="frame" x="0.0" y="750" width="414" height="38"/>
                                 <color key="backgroundColor" red="0.80613583330000005" green="0.90151077509999999" blue="0.73742300270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.SavePlantButton"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <state key="normal" title="SAVE PLANT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,6 +133,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6T-za-t4q">
                                 <rect key="frame" x="0.0" y="44" width="414" height="269"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.ImageButton"/>
                                 <connections>
                                     <action selector="ImageButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="4dQ-qe-meB"/>
                                 </connections>
@@ -136,6 +141,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKi-YD-g3O">
                                 <rect key="frame" x="0.0" y="808" width="414" height="34"/>
                                 <color key="backgroundColor" red="0.9358652234" green="0.70072883370000005" blue="0.70324587819999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.CanelButton"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -147,6 +153,7 @@
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWw-jq-DJW">
                                 <rect key="frame" x="0.0" y="680" width="414" height="216"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.PickerView"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

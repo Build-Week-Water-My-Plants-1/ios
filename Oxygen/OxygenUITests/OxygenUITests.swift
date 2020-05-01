@@ -95,12 +95,41 @@ class OxygenUITests: XCTestCase {
         finishedRegister.fulfill()
         wait(for: [finishedRegister], timeout: 30)
         app.textFields["LoginVC.UsernameTextfield"].tap()
-        app.textFields["LoginVC.UsernameTextfield"].typeText("TestUserEzra123")
+        app.textFields["LoginVC.UsernameTextfield"].typeText("TestUserEzra1235")
         app.otherElements["LoginVC.PasswordTextfield"].tap()
         app.otherElements["LoginVC.PasswordTextfield"].tap()
         app.otherElements["LoginVC.PasswordTextfield"].typeText("testpassword")
         XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
         app.buttons["LoginVC.LoginButton"].tap()
+    }
+    
+    func testLoginCreatePlant() {
+        let app = XCUIApplication()
+        app.launch()
+        let expect = XCTestExpectation(description: "Waiting for view to upload")
+        app.buttons["RegisterVC.LoginButton"].tap()
+        expect.fulfill()
+        wait(for: [expect], timeout: 15)
+        app.textFields["LoginVC.UsernameTextfield"].tap()
+        app.textFields["LoginVC.UsernameTextfield"].typeText("TestUserEzra1235")
+        app.otherElements["LoginVC.PasswordTextfield"].tap()
+        app.otherElements["LoginVC.PasswordTextfield"].tap()
+        app.otherElements["LoginVC.PasswordTextfield"].typeText("testpassword")
+        XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        let expectLogin = XCTestExpectation(description: "waiting to login")
+        app.buttons["LoginVC.LoginButton"].tap()
+        expectLogin.fulfill()
+        wait(for: [expectLogin], timeout: 15)
+        
+        //PlantDetailController.PlantNameLabel
+        //PlantDetailController.SpeciesNameLabel
+        //PlantDetailController.WaterFrequencyLabel
+        //PlantDetailController.ImageButton
+        //PlantDetailController.SavePlantButton
+        //PlantDetailController.CanelButton
+        //PlantDetailController.PickerView
+        
+        //TODO: XCUI control for UI Detail
     }
     
     func testLoginToRegister() {
