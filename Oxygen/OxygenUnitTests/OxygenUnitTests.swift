@@ -10,7 +10,7 @@ import XCTest
 @testable import Oxygen
 
 class OxygenUnitTests: XCTestCase {
-        //MARK: - Properties -
+        // MARK: - Properties -
     var bearer: Bearer?
     var user: User?
     
@@ -26,22 +26,19 @@ class OxygenUnitTests: XCTestCase {
         case noEncode
         case noRep
     }
-    
     private enum LoginStatus {
         case notLoggedIn
-        case LoggedIn(Bearer)
-        
+        case loggedIn(Bearer)
         static var isLoggedIn: Self {
             if let bearer = ApiController.bearer {
-                return LoggedIn(bearer)
+                return loggedIn(bearer)
             } else {
                 return notLoggedIn
             }
         }
     }
 
-    //MARK: User Tests
-    
+    // MARK: User Tests
     func testUserCreate() {
         let user = UserRepresentation(id: 1, username: "eggy", password: "weggy", phoneNumber: "555-555-5555")
         if user.id == 1,
@@ -54,13 +51,8 @@ class OxygenUnitTests: XCTestCase {
             XCTAssert(user.phoneNumber == "555-555-5555")
         }
     }
-    
-    
-    
     func testForRegisterResults() {
-        
     }
-    
 
     func testForLoginResults() {
         let expectation = self.expectation(description: "Wait for results")
@@ -71,14 +63,13 @@ class OxygenUnitTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 5)
     }
-    
-    //MARK: Plant Tests
-    
+
+    // MARK: Plant Tests
+
     func testPlantTableView() {
-        let _ = PlantsTableViewController()
+        XCTAssertFalse(LoginViewController.isAccessibilityElement())
     }
-    
-    func testCreatingPlant(){
+    func testCreatingPlant() {
         let controller = ApiController()
         //  var plantRep: PlantRepresentation?
         guard let newBearer = bearer else {return}
@@ -92,15 +83,11 @@ class OxygenUnitTests: XCTestCase {
             XCTAssert(newPlant.id != nil, "The Plant has a id")
             XCTAssert(newPlant.image != nil, "The Plant has a image")
             XCTAssert(newPlant.plantRepresentation != nil, "The Plant has a representation")
-            
             resultsExpectation.fulfill()
         }
         wait(for: [resultsExpectation], timeout: 2)
         XCTAssertNotNil(newBearer)
     }
-    
-    //MARK: Networking Specific Tests
-    
     func testSpeedOfNetworkRequestGetPlantNames() {
         measure {
             let expectation = self.expectation(description: "Wait for results")
@@ -111,9 +98,7 @@ class OxygenUnitTests: XCTestCase {
             wait(for: [expectation], timeout: 5)
         }
     }
-    
     func testUserRegister() {
-//        let user = User(id: "239847234234", username: "RegisterTesterDELETEME", password: "RegisterTesterDELETEME", phoneNumber: "555-555-5123")
         guard let newUser = user else {return}
         let expectation = self.expectation(description: "Wait for Register")
         let controller = ApiController(dataLoader: URLSession(configuration: .ephemeral))
@@ -124,30 +109,22 @@ class OxygenUnitTests: XCTestCase {
         wait(for: [expectation], timeout: 5)
         XCTAssertNotNil(newUser)
     }
-    
-    
-    //MARK: JSON Testing
-    //TODO: Implement the searchresults structure to be able to conform to the data loading and create a mock request using the JSON provided in the MockJSON
     func testValidData() {
         let mockDataLoader = MockDataLoader(data: goodResultPlantData, response: nil, error: nil)
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController(dataLoader: mockDataLoader)
                 controller.fetchPlantsFromServer { (_ ) in
-            //MARK: Fetching broken due to Backend Errors.
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
     }
-    
     func testInvalidValidData() {
             let mockDataLoader = MockDataLoader(data: badResultPlantData, response: nil, error: nil)
             let expectation = self.expectation(description: "Wait for results")
             let controller = ApiController(dataLoader: mockDataLoader)
                     controller.fetchPlantsFromServer { (_ ) in
-                //MARK: Fetching broken due to Backend Errors.
                 expectation.fulfill()
             }
             wait(for: [expectation], timeout: 5)
         }
     }
-

@@ -24,6 +24,7 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hsk-SP-3cu">
                                             <rect key="frame" x="353" y="0.0" width="45" height="57"/>
+                                            <accessibility key="accessibilityConfiguration" identifier="PlantTableVC.wateredButton"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Hsk-SP-3cu" secondAttribute="height" multiplier="1:1" id="FdM-yr-sgj"/>
                                                 <constraint firstAttribute="width" constant="45" id="Pqn-Ke-lin"/>
@@ -38,12 +39,14 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nickname:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-8e-LPk">
                                                     <rect key="frame" x="0.0" y="0.0" width="345" height="26.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="PlantsTableVC.nicknameLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Genus:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgO-qS-y4R">
                                                     <rect key="frame" x="0.0" y="30.5" width="345" height="26.5"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="PlantsTableVC.speciesLabel"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>

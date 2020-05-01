@@ -10,31 +10,31 @@ import UIKit
 import CoreData
 
 class PlantsTableViewController: UITableViewController {
-     
     // MARK: - Properties
-    
     var shouldPresentLoginViewController: Bool {
         ApiController.bearer == nil
     }
-    
     let apiController = ApiController()
-    
     lazy var fetchedResultsController: NSFetchedResultsController<Plant> = {
         let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "commonName", ascending: true)]
         let context = CoreDataStack.shared.mainContext
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                             managedObjectContext: context,
+                                             sectionNameKeyPath: nil,
+                                             cacheName: nil)
         frc.delegate = self
-        try! frc.performFetch()
+        do {
+            try frc.performFetch()
+        } catch {
+            NSLog("Error")
+        }
         return frc
     }()
-    
     // MARK: - View Lifecycle
-    
     override func viewDidLoad() {
-        super.viewDidLoad()        
+    super.viewDidLoad()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         if shouldPresentLoginViewController {
             presentRegisterView()
@@ -46,25 +46,22 @@ class PlantsTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 1
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PlantCell", for: indexPath) as?
             PlantTableViewCell else {
                 fatalError("Can't dequeue cell of type \(PlantTableViewCell())")
         }
-        
         cell.plant = fetchedResultsController.object(at: indexPath)
         cell.delegate = self
-        
         return cell
     }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let plant = fetchedResultsController.object(at: indexPath)
             apiController.deletePlantFromServer(plant) { result in
@@ -83,43 +80,31 @@ class PlantsTableViewController: UITableViewController {
             }
         }
     }
-    
     // MARK: - Navigation
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CreatePlantSegue" {
             guard let createVC = segue.destination as? PlantDetailViewController else { return }
-            
             createVC.apiController = apiController
         } else if segue.identifier == "PlantDetailSegue" {
             guard let detailVC = segue.destination as? PlantDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else { return }
-            
             detailVC.plant = fetchedResultsController.object(at: indexPath)
             detailVC.apiController = apiController
         }
     }
-    
     // MARK: - Actions
-    
     @IBAction func signOut(_ sender: Any) {
         // Clear everything
         self.clearData()
         ApiController.bearer = nil
-        
         // Move the user back to the register page
         self.presentRegisterView()
     }
-    
     @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
-        
     }
-    
     // MARK: - Core Data
-    
     func clearData() {
         let context = CoreDataStack.shared.mainContext
-        
         do {
             let fetchRequest: NSFetchRequest<Plant> = Plant.fetchRequest()
             let allPlants = try context.fetch(fetchRequest)
@@ -132,11 +117,10 @@ class PlantsTableViewController: UITableViewController {
             NSLog("Could not fetch plants.")
         }
     }
-    
     // MARK: - Private Functions
-    
     private func presentRegisterView() {
-        let loginRegisterStoryboard = UIStoryboard(name: "Login-Register", bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
+        let loginRegisterStoryboard = UIStoryboard(name: "Login-Register",
+                                                   bundle: Bundle(identifier: "CasanovaStudios.Oxygen"))
         let registerViewController = loginRegisterStoryboard.instantiateViewController(withIdentifier: "RegisterView")
         registerViewController.modalPresentationStyle = .fullScreen
         present(registerViewController, animated: true)
@@ -147,11 +131,9 @@ extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange sectionInfo: NSFetchedResultsSectionInfo,
                     atSectionIndex sectionIndex: Int,
@@ -165,7 +147,6 @@ extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
             break
         }
     }
-    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,
                     at indexPath: IndexPath?,
@@ -196,8 +177,8 @@ extension PlantsTableViewController: PlantCellDelegate {
     func timerDidFire(plant: Plant) {
         showAlert(title: "Water is required", message: "\(plant.commonName ?? "egg") needs water badly")
     }
-    
-    func showAlert(title: String, message: String){
+    func showAlert(title: String,
+                   message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         present(alert, animated: true)

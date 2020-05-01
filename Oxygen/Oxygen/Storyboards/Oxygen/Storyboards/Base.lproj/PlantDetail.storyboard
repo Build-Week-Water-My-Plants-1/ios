@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gQO-wh-fPQ">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,42 +11,43 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="gQO-wh-fPQ" customClass="PlantDetailViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LrM-ms-kkV">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera.viewfinder" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aQn-QW-uuh">
-                                <rect key="frame" x="0.0" y="45" width="414" height="266.5"/>
+                                <rect key="frame" x="0.0" y="1" width="600" height="177.5"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLu-4p-gGA">
-                                <rect key="frame" x="0.0" y="321" width="414" height="2"/>
+                                <rect key="frame" x="0.0" y="188" width="600" height="2"/>
                                 <color key="backgroundColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="nIK-Ht-tgQ"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="IlB-Fp-c83">
-                                <rect key="frame" x="8" y="373" width="398" height="179"/>
+                                <rect key="frame" x="8" y="240" width="584" height="179"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-ix-spI">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="39"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="584" height="39"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsk-KX-zCo">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nsk-KX-zCo" userLabel="NameeLbl">
                                                 <rect key="frame" x="0.0" y="0.0" width="59.5" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="sy4-fj-NGN">
-                                                <rect key="frame" x="74.5" y="0.0" width="323.5" height="39"/>
+                                                <rect key="frame" x="74.5" y="0.0" width="509.5" height="39"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="common name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-iL-dCG">
-                                                        <rect key="frame" x="0.0" y="0.0" width="323.5" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="509.5" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.PlantNameLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLD-4R-3R7">
-                                                        <rect key="frame" x="0.0" y="38" width="323.5" height="1"/>
+                                                        <rect key="frame" x="0.0" y="38" width="509.5" height="1"/>
                                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Jh5-DJ-n23"/>
@@ -58,7 +58,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Mbp-GW-uwc">
-                                        <rect key="frame" x="0.0" y="71" width="398" height="38"/>
+                                        <rect key="frame" x="0.0" y="71" width="584" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Species:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOu-Bz-QWe">
                                                 <rect key="frame" x="0.0" y="0.0" width="79" height="38"/>
@@ -67,15 +67,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="wqr-LA-B8K">
-                                                <rect key="frame" x="94" y="0.0" width="304" height="38"/>
+                                                <rect key="frame" x="94" y="0.0" width="490" height="38"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="scientific name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ydB-ac-kvu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="304" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="490" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.SpeciesNameLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQx-yh-vlv">
-                                                        <rect key="frame" x="0.0" y="37" width="304" height="1"/>
+                                                        <rect key="frame" x="0.0" y="37" width="490" height="1"/>
                                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="Asj-XZ-Rog"/>
@@ -86,7 +87,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="cjI-qa-DQL">
-                                        <rect key="frame" x="0.0" y="141" width="398" height="38"/>
+                                        <rect key="frame" x="0.0" y="141" width="584" height="38"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W41-T8-Qiq">
                                                 <rect key="frame" x="0.0" y="0.0" width="103" height="38"/>
@@ -95,15 +96,16 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="HX4-fK-fXn">
-                                                <rect key="frame" x="118" y="0.0" width="280" height="38"/>
+                                                <rect key="frame" x="118" y="0.0" width="466" height="38"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="watering frequency" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cbX-aP-R1u">
-                                                        <rect key="frame" x="0.0" y="0.0" width="280" height="35"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="466" height="35"/>
+                                                        <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.WaterFrequencyLabel"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63Y-Lu-uki">
-                                                        <rect key="frame" x="0.0" y="37" width="280" height="1"/>
+                                                        <rect key="frame" x="0.0" y="37" width="466" height="1"/>
                                                         <color key="backgroundColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="gdZ-Wg-Chu"/>
@@ -116,8 +118,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhr-aR-yLA">
-                                <rect key="frame" x="0.0" y="750" width="414" height="38"/>
+                                <rect key="frame" x="0.0" y="488" width="600" height="38"/>
                                 <color key="backgroundColor" red="0.80613583330000005" green="0.90151077509999999" blue="0.73742300270000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.SavePlantButton"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
                                 <state key="normal" title="SAVE PLANT">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,14 +131,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6T-za-t4q">
-                                <rect key="frame" x="0.0" y="44" width="414" height="269"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.ImageButton"/>
                                 <connections>
-                                    <action selector="ImageButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="4dQ-qe-meB"/>
+                                    <action selector="imageButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="4dQ-qe-meB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TKi-YD-g3O">
-                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
+                                <rect key="frame" x="0.0" y="546" width="600" height="34"/>
                                 <color key="backgroundColor" red="0.9358652234" green="0.70072883370000005" blue="0.70324587819999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.CanelButton"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <state key="normal" title="CANCEL">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -145,8 +150,9 @@
                                 </connections>
                             </button>
                             <pickerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GWw-jq-DJW">
-                                <rect key="frame" x="0.0" y="680" width="414" height="216"/>
+                                <rect key="frame" x="0.0" y="384" width="600" height="216"/>
                                 <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="PlantDetailController.PickerView"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

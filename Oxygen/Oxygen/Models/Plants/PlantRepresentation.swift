@@ -13,7 +13,6 @@ struct PlantRepresentation: Codable {
     let commonName: String
     let scientificName: String
     let h2oFrequency: Double
-    
     var idString: String {
         return String(id)
     }

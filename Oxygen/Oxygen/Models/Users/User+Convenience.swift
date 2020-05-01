@@ -10,16 +10,13 @@ import Foundation
 import CoreData
 
 extension User {
-    
     var userRepresentation: UserRepresentation? {
         guard let username = username else { return nil }
-        
         return UserRepresentation(id: Int(id ?? ""),
                                   username: username,
                                   password: password,
                                   phoneNumber: phoneNumber)
     }
-    
     @discardableResult convenience init(id: String?,
                                         username: String,
                                         password: String,
@@ -31,7 +28,6 @@ extension User {
         self.password = password
         self.phoneNumber = phoneNumber
     }
-    
 //    @discardableResult convenience init?(userRepresentation: UserRepresentation,
 //                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 //        guard let phoneNumber = userRepresentation.phoneNumber,

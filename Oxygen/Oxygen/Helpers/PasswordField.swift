@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class PasswordField: UIControl {
-    
     // Public API - these properties are used to fetch the final password and strength values
     private (set) var password: String = ""
     private var passwordHidden = true
@@ -22,11 +21,10 @@ class PasswordField: UIControl {
     func setup() {
         addSubview(textField)
         addSubview(showHideButton)
-        
         // Turn off Autoresizing Mask translation
         textField.translatesAutoresizingMaskIntoConstraints = false
         showHideButton.translatesAutoresizingMaskIntoConstraints = false
-        
+
         // Constrain
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
@@ -37,7 +35,6 @@ class PasswordField: UIControl {
             showHideButton.heightAnchor.constraint(equalTo: textField.heightAnchor, multiplier: 0.7),
             showHideButton.widthAnchor.constraint(equalTo: showHideButton.heightAnchor)
         ])
-        
         // Initialize labels and text field
         textField.borderStyle = .roundedRect
         textField.layer.borderColor = textFieldBorderColor.cgColor
@@ -71,13 +68,10 @@ class PasswordField: UIControl {
 
 //replaces, changes, and resets pasword strings and user text.
 extension PasswordField: UITextFieldDelegate {
-    
-// This function changes the password as the user types. Might want to add debouncing. Done this way so that the password variable is always up to date in case the user presses register or does something funky before hitting return or ending editing. (HO)
     @objc func textFieldDidChange(_ textField: UITextField) {
         password = textField.text ?? ""
         sendActions(for: [.valueChanged])
     }
-    
  //this is putting the user input as the password instance, and resigning the textfiled when return is hit.
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         password = textField.text ?? ""
@@ -85,7 +79,6 @@ extension PasswordField: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         password = textField.text ?? ""
         sendActions(for: [.valueChanged, .editingDidEnd])
