@@ -59,6 +59,7 @@ class PlantsTableViewController: UITableViewController {
         }
         
         cell.plant = fetchedResultsController.object(at: indexPath)
+        cell.delegate = self
         
         return cell
     }
@@ -108,6 +109,10 @@ class PlantsTableViewController: UITableViewController {
         
         // Move the user back to the register page
         self.presentRegisterView()
+    }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue) {
+        
     }
     
     // MARK: - Core Data
@@ -184,5 +189,17 @@ extension PlantsTableViewController: NSFetchedResultsControllerDelegate {
         @unknown default:
             break
         }
+    }
+}
+
+extension PlantsTableViewController: PlantCellDelegate {
+    func timerDidFire(plant: Plant) {
+        showAlert(title: "Water is required", message: "\(plant.commonName ?? "egg") needs water badly")
+    }
+    
+    func showAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alert, animated: true)
     }
 }

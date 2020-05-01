@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Plants Table View Controller-->
+        <!--Plants-->
         <scene sceneID="HGs-Fr-61k">
             <objects>
                 <tableViewController id="PtH-kl-NLi" customClass="PlantsTableViewController" customModule="Oxygen" customModuleProvider="target" sceneMemberID="viewController">
@@ -74,7 +74,7 @@
                             <outlet property="delegate" destination="PtH-kl-NLi" id="dHy-in-JqA"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="0ym-rm-k5u">
+                    <navigationItem key="navigationItem" title="Plants" id="0ym-rm-k5u">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="39K-VJ-EcO">
                             <connections>
                                 <action selector="signOut:" destination="PtH-kl-NLi" id="s44-9F-BUY"/>
