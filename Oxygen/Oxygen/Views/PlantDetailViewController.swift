@@ -12,6 +12,7 @@ class PlantDetailViewController: UIViewController {
 
     // MARK: - Outlets
     
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var plantNameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
@@ -40,8 +41,32 @@ class PlantDetailViewController: UIViewController {
             let scientificName = speciesTextField.text,
             let frequency = frequencyTextField.text,
             let doubleFrequency = Double(frequency) else { return }
-                
-        let plant = Plant(commonName: commonName, scientificName: scientificName, frequency: doubleFrequency, image: nil)
+        
+        if let plant = plant {
+            plant.commonName = commonName
+            plant.scientificName = scientificName
+            plant.h2oFrequency = doubleFrequency
+            
+            apiController?.sendPlantToServer(plant: plant, completion: { result in
+                switch result {
+                case .success(_):
+                    print("eggy")
+                case .failure(_):
+                    print("weggy")
+                }
+            })
+        } else {
+            let plant = Plant(commonName: commonName, scientificName: scientificName, frequency: doubleFrequency, image: nil)
+            
+            apiController?.sendPlantToServer(plant: plant, completion: { result in
+                switch result {
+                case .success(_):
+                    print("eggy")
+                case .failure(_):
+                    print("weggy")
+                }
+            })
+        }
         
         do {
             try CoreDataStack.shared.mainContext.save()
@@ -49,19 +74,6 @@ class PlantDetailViewController: UIViewController {
             NSLog("Error saving managed object context: \(error)")
         }
         self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
-
-        apiController?.sendPlantToServer(plant: plant, completion: { result in
-            switch result {
-            case .success(_):
-                print("eggy")
-            case .failure(_):
-                print("weggy")
-            }
-        })
-    }
-    
-    @IBAction func cancelButton(_ sender: Any) {
-        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func ImageButton(_ sender: Any) {

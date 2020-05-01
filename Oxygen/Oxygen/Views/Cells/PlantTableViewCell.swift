@@ -8,13 +8,17 @@
 
 import UIKit
 
+protocol PlantCellDelegate {
+    func timerDidFire(plant: Plant) -> Void
+}
+
 class PlantTableViewCell: UITableViewCell {
     
     //MARK: Properties
     
     @IBOutlet weak var plantNickname: UILabel!
     @IBOutlet weak var plantSpecies: UILabel!
-     @IBOutlet weak var plantWateredButton: UIButton!
+    @IBOutlet weak var plantWateredButton: UIButton!
     
     var plant: Plant? {
         didSet {
@@ -22,52 +26,54 @@ class PlantTableViewCell: UITableViewCell {
         }
     }
     
-//    var timer: Timer = Timer()
+    var delegate: PlantCellDelegate?
+    
+    //    var timer: Timer = Timer()
     
     //FIXME: Add a Water plants button on the cell if time permits
     
+    
+    //let controller = controller.shared <------- SINGLETON
+    
+    
+    // This is using the core data stack reference(?) 👇
+    
+    //TODO: Uncomment for production & once CoreData is set.
+    
+    
+    var isPlantWatered: Bool = false
+    
+    //MARK: Actions
+    @IBAction func waterPlantButtonTapped(_ sender: UIButton) {
+        guard let plant = plant else { return }
+        plant.isWatered.toggle()
         
-        //let controller = controller.shared <------- SINGLETON
+        updateViews()
         
-        
-        // This is using the core data stack reference(?) 👇
-        
-        //TODO: Uncomment for production & once CoreData is set.
-        
-        
-        var isPlantWatered: Bool = false
-        
-        //MARK: Actions
-        @IBAction func waterPlantButtonTapped(_ sender: UIButton) {
-            guard let plant = plant else { return }
-            plant.isWatered.toggle()
-            
-            updateViews()
-            
-            // Start Timer
-            runTimer()
-//            self.timer = Timer.scheduledTimer(withTimeInterval: plant.h2oFrequency, repeats: false) { _ in
-//                self.timer.invalidate()
-//                self.timerFired()
-//            }
+        // Start Timer
+        runTimer()
+        //            self.timer = Timer.scheduledTimer(withTimeInterval: plant.h2oFrequency, repeats: false) { _ in
+        //                self.timer.invalidate()
+        //                self.timerFired()
+        //            }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     // MARK: - Private Functions
     
-//    @objc private func timerFired() {
-//        guard let plant = plant else { return }
-//        plant.isWatered = false
-//        updateViews()
-//    }
+    //    @objc private func timerFired() {
+    //        guard let plant = plant else { return }
+    //        plant.isWatered = false
+    //        updateViews()
+    //    }
     
     private func runTimer() {
         guard let plant = plant else { return }
@@ -75,6 +81,7 @@ class PlantTableViewCell: UITableViewCell {
         DispatchQueue.main.asyncAfter(deadline: .now() + plant.h2oFrequency) {
             plant.isWatered = false
             self.updateViews()
+            self.delegate?.timerDidFire(plant: plant)
         }
     }
     
@@ -92,5 +99,5 @@ class PlantTableViewCell: UITableViewCell {
             plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .normal)
         }
     }
-
+    
 }

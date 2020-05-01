@@ -124,6 +124,7 @@
                                 </state>
                                 <connections>
                                     <action selector="savePlantButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="ACW-4T-pA0"/>
+                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="YId-6g-fQz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6T-za-t4q">
@@ -140,8 +141,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButton:" destination="gQO-wh-fPQ" eventType="touchUpInside" id="ID0-ha-1Wf"/>
-                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="unwindToTable:" id="veh-Os-Qhz"/>
+                                    <segue destination="mJG-Dw-Zvn" kind="unwind" unwindAction="myUnwindActionWithUnwindSegue:" id="wyg-AK-Z56"/>
                                 </connections>
                             </button>
                         </subviews>
