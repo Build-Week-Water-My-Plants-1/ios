@@ -27,7 +27,6 @@ class OxygenUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
@@ -47,19 +46,71 @@ class OxygenUITests: XCTestCase {
     func testTextFieldTaps() throws {
         let app = XCUIApplication()
         app.launch()
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 0).isHittable)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 0).isProxy())
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 0).isEnabled)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 0).isProxy())
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 1).isHittable)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 1).isProxy())
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 1).isEnabled)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textField).element(boundBy: 1).isProxy())
-         XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .secureTextField).element.isEnabled)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .secureTextField).element.isProxy())
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .secureTextField).element.isHittable)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .secureTextField).element.isProxy())
-        XCTAssertTrue(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .secureTextField).element.isEnabled)
-        XCTAssertFalse(XCUIApplication().children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 1).children(matching: .secureTextField).element.isProxy())
+        var value: Int = 0
+        while value < 10 {
+            app.textFields["RegisterViewController.UserNameTextField"].tap()
+            value += 1
+        }
+                
+               
+    }
+    
+    func testRegister() throws {
+         let app = XCUIApplication()
+               app.launch()
+                      app.textFields["RegisterViewController.UserNameTextField"].tap()
+                      app.textFields["RegisterViewController.UserNameTextField"].typeText("TestUserEzra")
+                      XCTAssertNotEqual(app.textFields["RegisterViewController.UserNameTextField"].label, "TestUserEzra")
+                      app.textFields["RegisterViewController.PhoneNumberTextField"].tap()
+                      app.textFields["RegisterViewController.PhoneNumberTextField"].tap()
+                      app.textFields["RegisterViewController.PhoneNumberTextField"].typeText("321-577-5555")
+               app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.tap()
+               app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.tap()
+               app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.typeText("testpassword")
+               app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.tap()
+               app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.tap()
+               app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.typeText("testpassword")
+               XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+               app.buttons["RegisterVC.RegisterButton"].tap()
+    }
+    
+    func testLoginLifeCycle() throws {
+        let app = XCUIApplication()
+                     app.launch()
+                            app.textFields["RegisterViewController.UserNameTextField"].tap()
+                            app.textFields["RegisterViewController.UserNameTextField"].typeText("TestUserEzra")
+                            XCTAssertNotEqual(app.textFields["RegisterViewController.UserNameTextField"].label, "TestUserEzra")
+                            app.textFields["RegisterViewController.PhoneNumberTextField"].tap()
+                            app.textFields["RegisterViewController.PhoneNumberTextField"].tap()
+                            app.textFields["RegisterViewController.PhoneNumberTextField"].typeText("321-577-5555")
+                     app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.tap()
+                     app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.tap()
+                     app.otherElements["RegisterViewController.PasswordTextfield"].children(matching: .secureTextField).element.typeText("testpassword")
+                     app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.tap()
+                     app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.tap()
+                     app.otherElements["RegisterViewController.Password2Textfield"].children(matching: .secureTextField).element.typeText("testpassword")
+                     XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+                     app.buttons["RegisterVC.RegisterButton"].tap()
+    }
+    
+    
+}
+extension XCUIElement {
+    /**
+     Removes any current text in the field before typing in the new value
+     - Parameter text: the text to enter into the field
+     */
+    func clearAndEnterText(text: String) {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+
+        self.tap()
+
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+
+        self.typeText(deleteString)
+        self.typeText(text)
     }
 }
