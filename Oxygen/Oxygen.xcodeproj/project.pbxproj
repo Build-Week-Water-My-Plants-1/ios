@@ -16,6 +16,7 @@
 		2BAC2FEE2458C916002BD025 /* UserRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FED2458C916002BD025 /* UserRepresentation.swift */; };
 		2BAC2FF22459D599002BD025 /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FF12459D599002BD025 /* ApiController.swift */; };
 		2BAC2FF52459D742002BD025 /* Bearer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BAC2FF42459D742002BD025 /* Bearer.swift */; };
+		7F2F3B58245C122F00C9D027 /* OxygenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F2F3B57245C122F00C9D027 /* OxygenUITests.swift */; };
 		7F5A160B245BAF9500B9A1AB /* MockJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F5A160A245BAF9500B9A1AB /* MockJSON.swift */; };
 		7F6365E62457574E002D137D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E52457574E002D137D /* AppDelegate.swift */; };
 		7F6365E82457574E002D137D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6365E72457574E002D137D /* SceneDelegate.swift */; };
@@ -38,6 +39,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7F2F3B5A245C122F00C9D027 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7F6365DA2457574D002D137D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7F6365E12457574D002D137D;
+			remoteInfo = Oxygen;
+		};
 		7FEF3AF0245A8BA800A9B3BD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F6365DA2457574D002D137D /* Project object */;
@@ -58,6 +66,9 @@
 		2BAC2FF12459D599002BD025 /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		2BAC2FF32459D64D002BD025 /* Oxygen 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Oxygen 2.xcdatamodel"; sourceTree = "<group>"; };
 		2BAC2FF42459D742002BD025 /* Bearer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bearer.swift; sourceTree = "<group>"; };
+		7F2F3B55245C122F00C9D027 /* OxygenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxygenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7F2F3B57245C122F00C9D027 /* OxygenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OxygenUITests.swift; sourceTree = "<group>"; };
+		7F2F3B59245C122F00C9D027 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7F5A160A245BAF9500B9A1AB /* MockJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockJSON.swift; sourceTree = "<group>"; };
 		7F6365E22457574D002D137D /* Oxygen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oxygen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F6365E52457574E002D137D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +95,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7F2F3B52245C122F00C9D027 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7F6365DF2457574D002D137D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,11 +146,21 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		7F2F3B56245C122F00C9D027 /* OxygenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7F2F3B57245C122F00C9D027 /* OxygenUITests.swift */,
+				7F2F3B59245C122F00C9D027 /* Info.plist */,
+			);
+			path = OxygenUITests;
+			sourceTree = "<group>";
+		};
 		7F6365D92457574D002D137D = {
 			isa = PBXGroup;
 			children = (
 				7F6365E42457574E002D137D /* Oxygen */,
 				7FEF3AEC245A8BA800A9B3BD /* OxygenUnitTests */,
+				7F2F3B56245C122F00C9D027 /* OxygenUITests */,
 				7F6365E32457574D002D137D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,6 +170,7 @@
 			children = (
 				7F6365E22457574D002D137D /* Oxygen.app */,
 				7FEF3AEB245A8BA800A9B3BD /* OxygenUnitTests.xctest */,
+				7F2F3B55245C122F00C9D027 /* OxygenUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +275,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7F2F3B54245C122F00C9D027 /* OxygenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7F2F3B5E245C122F00C9D027 /* Build configuration list for PBXNativeTarget "OxygenUITests" */;
+			buildPhases = (
+				7F2F3B51245C122F00C9D027 /* Sources */,
+				7F2F3B52245C122F00C9D027 /* Frameworks */,
+				7F2F3B53245C122F00C9D027 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7F2F3B5B245C122F00C9D027 /* PBXTargetDependency */,
+			);
+			name = OxygenUITests;
+			productName = OxygenUITests;
+			productReference = 7F2F3B55245C122F00C9D027 /* OxygenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		7F6365E12457574D002D137D /* Oxygen */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6365F62457574F002D137D /* Build configuration list for PBXNativeTarget "Oxygen" */;
@@ -291,6 +338,10 @@
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Casanova Studios";
 				TargetAttributes = {
+					7F2F3B54245C122F00C9D027 = {
+						CreatedOnToolsVersion = 11.4.1;
+						TestTargetID = 7F6365E12457574D002D137D;
+					};
 					7F6365E12457574D002D137D = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -315,11 +366,19 @@
 			targets = (
 				7F6365E12457574D002D137D /* Oxygen */,
 				7FEF3AEA245A8BA800A9B3BD /* OxygenUnitTests */,
+				7F2F3B54245C122F00C9D027 /* OxygenUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7F2F3B53245C122F00C9D027 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7F6365E02457574D002D137D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,6 +401,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7F2F3B51245C122F00C9D027 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F2F3B58245C122F00C9D027 /* OxygenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7F6365DE2457574D002D137D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -382,6 +449,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7F2F3B5B245C122F00C9D027 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7F6365E12457574D002D137D /* Oxygen */;
+			targetProxy = 7F2F3B5A245C122F00C9D027 /* PBXContainerItemProxy */;
+		};
 		7FEF3AF1245A8BA800A9B3BD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 7F6365E12457574D002D137D /* Oxygen */;
@@ -417,6 +489,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7F2F3B5C245C122F00C9D027 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HL3XLM68NV;
+				INFOPLIST_FILE = OxygenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Oxygen;
+			};
+			name = Debug;
+		};
+		7F2F3B5D245C122F00C9D027 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = HL3XLM68NV;
+				INFOPLIST_FILE = OxygenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = CasanovaStudios.OxygenUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Oxygen;
+			};
+			name = Release;
+		};
 		7F6365F42457574F002D137D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -610,6 +720,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7F2F3B5E245C122F00C9D027 /* Build configuration list for PBXNativeTarget "OxygenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7F2F3B5C245C122F00C9D027 /* Debug */,
+				7F2F3B5D245C122F00C9D027 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		7F6365DD2457574D002D137D /* Build configuration list for PBXProject "Oxygen" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
