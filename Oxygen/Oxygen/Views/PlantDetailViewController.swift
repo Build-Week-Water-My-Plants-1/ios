@@ -58,8 +58,11 @@ class PlantDetailViewController: UIViewController {
         pickerView.isHidden = true
         plantNameTextField.text = plant?.commonName
         speciesTextField.text = plant?.scientificName
-        if let frequency = plant?.h2oFrequency {
-            frequencyTextField.text = String(frequency)
+        frequencyTextField.text = determineFrequencyText()
+        
+        if let image = plant?.image {
+            let data = image.data(using: .utf8)!
+            imageView.image = UIImage(data: data)
         }
     }
     
@@ -111,6 +114,8 @@ class PlantDetailViewController: UIViewController {
         present(imagePickerController, animated: true)
     }
     
+    // This is so inefficient its not even funny but it's 11:35 PM and I can't be bothered.
+    
     private func determineFrequency() -> Double {
         guard let frequency = frequencyTextField.text else { return 0 }
         
@@ -130,6 +135,24 @@ class PlantDetailViewController: UIViewController {
         }
     }
     
+    private func determineFrequencyText() -> String? {
+        guard let plant = plant else { return nil }
+        
+        switch plant.h2oFrequency {
+        case 86400:
+            return PickerOptions.onceADay.rawValue
+        case 172800:
+            return PickerOptions.everyTwoDays.rawValue
+        case 259200:
+            return PickerOptions.everyThreeDays.rawValue
+        case 604800:
+            return PickerOptions.onceAWeek.rawValue
+        case 5:
+            return PickerOptions.demo.rawValue
+        default:
+            return nil
+        }
+    }
 }
 
 extension PlantDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
@@ -167,6 +190,18 @@ extension PlantDetailViewController: UIImagePickerControllerDelegate, UINavigati
         }
         
         imageView.image = image
+        
+        if let plant = plant {
+            let dataString = String(data: (imageView.image?.pngData()!)!, encoding: .utf8)
+            plant.image = dataString
+            
+            do {
+                try CoreDataStack.shared.mainContext.save()
+            } catch {
+                NSLog("Error saving managed object context: \(error)")
+            }
+        }
+        
         picker.dismiss(animated: true, completion: nil)
     }
 }
