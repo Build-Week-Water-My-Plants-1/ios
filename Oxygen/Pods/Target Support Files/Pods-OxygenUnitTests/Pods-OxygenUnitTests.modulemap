@@ -1,0 +1,6 @@
+framework module Pods_OxygenUnitTests {
+  umbrella header "Pods-OxygenUnitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

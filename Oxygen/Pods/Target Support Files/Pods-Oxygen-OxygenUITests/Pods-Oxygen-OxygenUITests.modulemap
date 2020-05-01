@@ -1,0 +1,6 @@
+framework module Pods_Oxygen_OxygenUITests {
+  umbrella header "Pods-Oxygen-OxygenUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,7 +9,6 @@
 import XCTest
 
 class OxygenUITests: XCTestCase {
-    
     override func setUpWithError() throws {
         continueAfterFailure = false
     }
