@@ -10,20 +10,16 @@ import Foundation
 import CoreData
 
 extension Plant {
-    
     var plantRepresentation: PlantRepresentation? {
         guard let id = id,
             let commonName = commonName,
             let scientificName = scientificName else { return nil }
-        
         let idInt = Int(id) ?? 0
-        
         return PlantRepresentation(id: idInt,
                                    commonName: commonName,
                                    scientificName: scientificName,
                                    h2oFrequency: h2oFrequency)
     }
-    
     @discardableResult convenience init(id: String = UUID().uuidString,
                                         commonName: String,
                                         scientificName: String,
@@ -39,7 +35,6 @@ extension Plant {
         self.image = image
         self.isWatered = isWatered ?? false
     }
-    
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation,
                                          context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(id: plantRepresentation.idString,

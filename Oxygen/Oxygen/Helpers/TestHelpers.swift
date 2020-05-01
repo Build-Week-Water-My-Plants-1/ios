@@ -7,5 +7,3 @@
 //
 
 import Foundation
-
-/// A result type for testing/use case scenarios.
