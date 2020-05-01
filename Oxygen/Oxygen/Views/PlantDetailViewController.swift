@@ -12,40 +12,70 @@ class PlantDetailViewController: UIViewController {
 
     // MARK: - Outlets
     
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var plantNameTextField: UITextField!
     @IBOutlet weak var speciesTextField: UITextField!
     @IBOutlet weak var frequencyTextField: UITextField!
     
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     // MARK: - Properties
+    
+    let imagePickerController = UIImagePickerController()
     
     var plant: Plant?
     
     var apiController: ApiController?
+    
+    enum PickerOptions: String, CaseIterable {
+        case onceADay = "Once a day"
+        case everyTwoDays = "Every two days"
+        case everyThreeDays = "Every three days"
+        case onceAWeek = "Once a week"
+        case demo = "Demo Purposes: 5 seconds"
+    }
+    
+    private var pickerData: [String] {
+        var pickerData = [String]()
+        for data in PickerOptions.allCases {
+            pickerData.append(data.rawValue)
+        }
+        return pickerData
+    }
     
     // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        imagePickerController.delegate = self
+        imagePickerController.mediaTypes = ["public.image"]
+        
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        frequencyTextField.delegate = self
+        
+        pickerView.isHidden = true
         plantNameTextField.text = plant?.commonName
         speciesTextField.text = plant?.scientificName
-        frequencyTextField.text = String(plant?.h2oFrequency ?? 0)
+        if let frequency = plant?.h2oFrequency {
+            frequencyTextField.text = String(frequency)
+        }
     }
     
     // MARK: - Actions
     
     @IBAction func savePlantButton(_ sender: Any) {
+        
+        // TODO: Make sure these aren't empty before saving
+        
         guard let commonName = plantNameTextField.text,
-            let scientificName = speciesTextField.text,
-            let frequency = frequencyTextField.text,
-            let doubleFrequency = Double(frequency) else { return }
+            let scientificName = speciesTextField.text else { return }
         
         if let plant = plant {
             plant.commonName = commonName
             plant.scientificName = scientificName
-            plant.h2oFrequency = doubleFrequency
+            plant.h2oFrequency = determineFrequency()
             
             apiController?.sendPlantToServer(plant: plant, completion: { result in
                 switch result {
@@ -56,7 +86,7 @@ class PlantDetailViewController: UIViewController {
                 }
             })
         } else {
-            let plant = Plant(commonName: commonName, scientificName: scientificName, frequency: doubleFrequency, image: nil)
+            let plant = Plant(commonName: commonName, scientificName: scientificName, frequency: determineFrequency(), image: nil)
             
             apiController?.sendPlantToServer(plant: plant, completion: { result in
                 switch result {
@@ -77,7 +107,66 @@ class PlantDetailViewController: UIViewController {
     }
     
     @IBAction func ImageButton(_ sender: Any) {
-        
+        imagePickerController.sourceType = .photoLibrary
+        present(imagePickerController, animated: true)
     }
     
+    private func determineFrequency() -> Double {
+        guard let frequency = frequencyTextField.text else { return 0 }
+        
+        switch frequency {
+        case PickerOptions.onceADay.rawValue:
+            return 86400
+        case PickerOptions.everyTwoDays.rawValue:
+            return 172800
+        case PickerOptions.everyThreeDays.rawValue:
+            return 259200
+        case PickerOptions.onceAWeek.rawValue:
+            return 604800
+        case PickerOptions.demo.rawValue:
+            return 5
+        default:
+            return 0
+        }
+    }
+    
+}
+
+extension PlantDetailViewController: UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        frequencyTextField.text = pickerData[row]
+        pickerView.isHidden = true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        pickerView.isHidden = false
+        return false
+    }
+}
+
+extension PlantDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            return self.imagePickerController(picker, didSelect: nil)
+        }
+        
+        imageView.image = image
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

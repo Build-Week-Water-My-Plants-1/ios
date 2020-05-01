@@ -14,11 +14,13 @@ protocol PlantCellDelegate {
 
 class PlantTableViewCell: UITableViewCell {
     
-    //MARK: Properties
+    //MARK: - Outlets
     
     @IBOutlet weak var plantNickname: UILabel!
     @IBOutlet weak var plantSpecies: UILabel!
     @IBOutlet weak var plantWateredButton: UIButton!
+    
+    // MARK: - Properties
     
     var plant: Plant? {
         didSet {
@@ -27,9 +29,7 @@ class PlantTableViewCell: UITableViewCell {
     }
     
     var delegate: PlantCellDelegate?
-    
-    //    var timer: Timer = Timer()
-    
+        
     //FIXME: Add a Water plants button on the cell if time permits
     
     
@@ -52,10 +52,6 @@ class PlantTableViewCell: UITableViewCell {
         
         // Start Timer
         runTimer()
-        //            self.timer = Timer.scheduledTimer(withTimeInterval: plant.h2oFrequency, repeats: false) { _ in
-        //                self.timer.invalidate()
-        //                self.timerFired()
-        //            }
     }
     
     override func awakeFromNib() {
@@ -68,12 +64,6 @@ class PlantTableViewCell: UITableViewCell {
     }
     
     // MARK: - Private Functions
-    
-    //    @objc private func timerFired() {
-    //        guard let plant = plant else { return }
-    //        plant.isWatered = false
-    //        updateViews()
-    //    }
     
     private func runTimer() {
         guard let plant = plant else { return }
