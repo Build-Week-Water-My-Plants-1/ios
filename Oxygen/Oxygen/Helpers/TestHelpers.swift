@@ -9,7 +9,3 @@
 import Foundation
 
 /// A result type for testing/use case scenarios.
-enum ResultType: String {
-    case success
-    case fail
-}

@@ -167,7 +167,7 @@ class ApiController {
     }
     
     // MARK: - Plant Api
-        
+
     func fetchPlantsFromServer(completion: @escaping CompletionHandler = { _ in }) {
         guard case let .LoggedIn(bearer) = LoginStatus.isLoggedIn else {
             NSLog("User not logged in")
@@ -192,6 +192,7 @@ class ApiController {
             }
             do {
                 let plantRepresentations = try self.jsonDecoder.decode([PlantRepresentation].self, from: data)
+                
                 try self.updatePlants(with: plantRepresentations)
                 completion(.success(true))
             } catch {

@@ -68,7 +68,7 @@ class OxygenUnitTests: XCTestCase {
     
     //MARK: Networking Specific Tests
     
-    func testSpeedOfNetworkRequest() {
+    func testSpeedOfNetworkRequestGetPlantNames() {
         measure {
             let expectation = self.expectation(description: "Wait for results")
             let controller = ApiController(dataLoader: URLSession(configuration: .ephemeral))
@@ -77,5 +77,23 @@ class OxygenUnitTests: XCTestCase {
             }
             wait(for: [expectation], timeout: 5)
         }
+    }
+    
+    func testUserRegister() {
+        
+    }
+    
+    
+    //MARK: JSON Testing
+    //TODO: Implement the searchresults structure to be able to conform to the data loading and create a mock request using the JSON provided in the MockJSON
+    func testValidData() {
+        let mockDataLoader = MockDataLoader(data: goodResultData, response: nil, error: nil)
+        let expectation = self.expectation(description: "Wait for results")
+        let controller = ApiController(dataLoader: mockDataLoader)
+        controller.fetchPlantsFromServer { (_ ) in
+            //MARK: Fetching broken due to Backend Errors.
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
     }
 }
