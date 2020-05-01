@@ -65,7 +65,7 @@ class OxygenUnitTests: XCTestCase {
     func testForLoginResults() {
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController()
-        controller.login(username: "test", password: "password") {_ in
+                controller.login(username: "test", password: "password") {_ in
             print("Returned Results ⚠️")
             expectation.fulfill()
         }
@@ -87,6 +87,12 @@ class OxygenUnitTests: XCTestCase {
         let resultsExpectation = expectation(description: "wait for results")
         controller.sendPlantToServer(plant: newPlant) { (_ ) in
             self.bearer = newBearer
+            XCTAssert(newPlant.commonName != nil, "The Plant has a name")
+            XCTAssertFalse(newPlant.h2oFrequency != 0.1, "The Plant has a h2o Frequency")
+            XCTAssert(newPlant.id != nil, "The Plant has a id")
+            XCTAssert(newPlant.image != nil, "The Plant has a image")
+            XCTAssert(newPlant.plantRepresentation != nil, "The Plant has a representation")
+            
             resultsExpectation.fulfill()
         }
         wait(for: [resultsExpectation], timeout: 2)
@@ -126,14 +132,22 @@ class OxygenUnitTests: XCTestCase {
         let mockDataLoader = MockDataLoader(data: goodResultPlantData, response: nil, error: nil)
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController(dataLoader: mockDataLoader)
-        controller.fetchPlantsFromServer { (_ ) in
+                controller.fetchPlantsFromServer { (_ ) in
             //MARK: Fetching broken due to Backend Errors.
-            
-            
-            
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: 5)
     }
+    
+    func testInvalidValidData() {
+            let mockDataLoader = MockDataLoader(data: badResultPlantData, response: nil, error: nil)
+            let expectation = self.expectation(description: "Wait for results")
+            let controller = ApiController(dataLoader: mockDataLoader)
+                    controller.fetchPlantsFromServer { (_ ) in
+                //MARK: Fetching broken due to Backend Errors.
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: 5)
+        }
+    }
 
-}

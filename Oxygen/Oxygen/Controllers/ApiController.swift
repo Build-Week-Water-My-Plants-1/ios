@@ -184,7 +184,6 @@ class ApiController {
                 completion(.failure(.otherError))
                 return
             }
-            
             guard let data = data else {
                 NSLog("No data returned from fetch")
                 completion(.failure(.noData))
