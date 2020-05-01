@@ -48,8 +48,8 @@ class PlantDetailViewController: UIViewController {
         } catch {
             NSLog("Error saving managed object context: \(error)")
         }
-        navigationController?.dismiss(animated: true, completion: nil)
-        
+        self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
         apiController?.sendPlantToServer(plant: plant, completion: { result in
             switch result {
             case .success(_):

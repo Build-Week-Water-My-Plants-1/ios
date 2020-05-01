@@ -14,8 +14,9 @@ extension Plant {
     var plantRepresentation: PlantRepresentation? {
         guard let id = id,
             let commonName = commonName,
-            let scientificName = scientificName,
-            let idInt = Int(id) else { return nil }
+            let scientificName = scientificName else { return nil }
+        
+        let idInt = Int(id) ?? 0
         
         return PlantRepresentation(id: idInt,
                                    commonName: commonName,
@@ -28,6 +29,7 @@ extension Plant {
                                         scientificName: String,
                                         frequency: Double = 1.0,
                                         image: String?,
+                                        isWatered: Bool? = false,
                                         context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         self.id = id
@@ -35,6 +37,7 @@ extension Plant {
         self.scientificName = scientificName
         self.h2oFrequency = frequency
         self.image = image
+        self.isWatered = isWatered ?? false
     }
     
     @discardableResult convenience init?(plantRepresentation: PlantRepresentation,
@@ -44,6 +47,7 @@ extension Plant {
                   scientificName: plantRepresentation.scientificName,
                   frequency: plantRepresentation.h2oFrequency,
                   image: nil,
+                  isWatered: nil,
                   context: context)
     }
 }

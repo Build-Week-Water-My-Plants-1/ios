@@ -22,6 +22,8 @@ class PlantTableViewCell: UITableViewCell {
         }
     }
     
+//    var timer: Timer = Timer()
+    
     //FIXME: Add a Water plants button on the cell if time permits
     
         
@@ -37,15 +39,17 @@ class PlantTableViewCell: UITableViewCell {
         
         //MARK: Actions
         @IBAction func waterPlantButtonTapped(_ sender: UIButton) {
-            isPlantWatered.toggle()
+            guard let plant = plant else { return }
+            plant.isWatered.toggle()
             
+            updateViews()
             
-            if isPlantWatered == false {
-                plantWateredButton.setImage(#imageLiteral(resourceName: "UncoloredPlantUpset.png") , for: .normal)
-            } else if isPlantWatered {
-                plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .normal)
-            }
-
+            // Start Timer
+            runTimer()
+//            self.timer = Timer.scheduledTimer(withTimeInterval: plant.h2oFrequency, repeats: false) { _ in
+//                self.timer.invalidate()
+//                self.timerFired()
+//            }
     }
 
     override func awakeFromNib() {
@@ -57,10 +61,35 @@ class PlantTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func updateViews() {
-        if let plant = plant {
-            plantNickname.text = plant.commonName
-            plantSpecies.text = plant.scientificName
+    // MARK: - Private Functions
+    
+//    @objc private func timerFired() {
+//        guard let plant = plant else { return }
+//        plant.isWatered = false
+//        updateViews()
+//    }
+    
+    private func runTimer() {
+        guard let plant = plant else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + plant.h2oFrequency) {
+            plant.isWatered = false
+            self.updateViews()
+        }
+    }
+    
+    private func updateViews() {
+        guard let plant = plant else { return }
+        
+        plantNickname.text = plant.commonName
+        plantSpecies.text = plant.scientificName
+        
+        if plant.isWatered == false {
+            plantWateredButton.isEnabled = true
+            plantWateredButton.setImage(#imageLiteral(resourceName: "UncoloredPlantUpset.png") , for: .normal)
+        } else if plant.isWatered {
+            plantWateredButton.isEnabled = false
+            plantWateredButton.setImage( #imageLiteral(resourceName: "UncoloredPlant.png") , for: .normal)
         }
     }
 
