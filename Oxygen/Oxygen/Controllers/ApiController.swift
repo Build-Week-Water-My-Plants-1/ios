@@ -69,6 +69,12 @@ class ApiController {
         return decoder
     }()
     
+    var dataLoader: NetworkDataLoader
+    
+    init(dataLoader: NetworkDataLoader = URLSession.shared) {
+        self.dataLoader = dataLoader
+    }
+    
     // MARK: - User Api
     
     func register(with user: User, completion: @escaping CompletionHandler = { _ in }) {
@@ -221,7 +227,7 @@ class ApiController {
                 NSLog("Error decoding plants from server: \(error)")
                 completion(.failure(.noData))
             }
-        }
+        }.resume()
     }
     
     

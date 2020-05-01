@@ -10,35 +10,14 @@ import XCTest
 @testable import Oxygen
 
 class OxygenUnitTests: XCTestCase {
-    
+        //MARK: - Singletons -
     var bearer: Bearer?
-    
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     //MARK: User Tests
     
     func testUserCreate() {
         let user = UserRepresentation(id: 1, username: "eggy", password: "weggy", phoneNumber: "555-555-5555")
-         if user.id == 1,
+        if user.id == 1,
             user.username == "eggy",
             user.password == "weggy",
             user.phoneNumber == "555-555-5555" {
@@ -49,18 +28,22 @@ class OxygenUnitTests: XCTestCase {
         }
     }
     
+    
+    
     func testForRegisterResults() {
         
+    }
+    
+    
+    func testForLoginResults() {
         let expectation = self.expectation(description: "Wait for results")
         let controller = ApiController()
         controller.login(username: "test", password: "password") {_ in
-              print("Returned Results ⚠️")
-//            XCTAssertGreaterThan(, 0)
-//             XCTAssertGreaterThan(controller.searchResults.count, 0)
-              expectation.fulfill()
-          }
-          wait(for: [expectation], timeout: 5)
-      }
+            print("Returned Results ⚠️")
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: 5)
+    }
     
     //MARK: Plant Tests
     
@@ -69,17 +52,30 @@ class OxygenUnitTests: XCTestCase {
     }
     
     func testCreatingPlant(){
-          let controller = ApiController()
+        let controller = ApiController()
         //  var plantRep: PlantRepresentation?
-          guard let newBearer = bearer else {return}
-          var plant: Plant?
-          guard let newPlant = plant else {return}
-          let resultsExpectation = expectation(description: "wait for results")
+        guard let newBearer = bearer else {return}
+        let plant = Plant(commonName: "Eggy", scientificName: "Weggy", image: "")
+        let newPlant = plant
+        let resultsExpectation = expectation(description: "wait for results")
         controller.sendPlantToServer(plant: newPlant) { (_ ) in
             self.bearer = newBearer
             resultsExpectation.fulfill()
         }
-           wait(for: [resultsExpectation], timeout: 2)
-          XCTAssertNotNil(newBearer)
-      }
+        wait(for: [resultsExpectation], timeout: 2)
+        XCTAssertNotNil(newBearer)
+    }
+    
+    //MARK: Networking Specific Tests
+    
+    func testSpeedOfNetworkRequest() {
+        measure {
+            let expectation = self.expectation(description: "Wait for results")
+            let controller = ApiController(dataLoader: URLSession(configuration: .ephemeral))
+            controller.getPlantNames { (_ ) in
+                expectation.fulfill()
+            }
+            wait(for: [expectation], timeout: 5)
+        }
+    }
 }
