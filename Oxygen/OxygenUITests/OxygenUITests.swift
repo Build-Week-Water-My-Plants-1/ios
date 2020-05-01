@@ -103,7 +103,7 @@ class OxygenUITests: XCTestCase {
         app.buttons["LoginVC.LoginButton"].tap()
     }
     
-    func testLoginCreatePlant() {
+    func testLoginSignOut() {
         let app = XCUIApplication()
         app.launch()
         let expect = XCTestExpectation(description: "Waiting for view to upload")
@@ -116,20 +116,11 @@ class OxygenUITests: XCTestCase {
         app.otherElements["LoginVC.PasswordTextfield"].tap()
         app.otherElements["LoginVC.PasswordTextfield"].typeText("testpassword")
         XCUIApplication()/*@START_MENU_TOKEN@*/.buttons["Return"]/*[[".keyboards",".buttons[\"return\"]",".buttons[\"Return\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
-        let expectLogin = XCTestExpectation(description: "waiting to login")
         app.buttons["LoginVC.LoginButton"].tap()
-        expectLogin.fulfill()
-        wait(for: [expectLogin], timeout: 15)
         
-        //PlantDetailController.PlantNameLabel
-        //PlantDetailController.SpeciesNameLabel
-        //PlantDetailController.WaterFrequencyLabel
-        //PlantDetailController.ImageButton
-        //PlantDetailController.SavePlantButton
-        //PlantDetailController.CanelButton
-        //PlantDetailController.PickerView
+//        XCUIApplication().navigationBars["Plants"].buttons["Sign Out"].tap()
         
-        //TODO: XCUI control for UI Detail
+        
     }
     
     func testLoginToRegister() {
@@ -152,6 +143,12 @@ class OxygenUITests: XCTestCase {
         finishedRegister.fulfill()
         wait(for: [finishedRegister], timeout: 30)
         app.buttons["LoginVC.RegisterButton"].tap()
+    }
+    
+    func waitForElementToAppear(_ element: XCUIElement) {
+        let existsPredicate = NSPredicate(format: "exists == true")
+        expectation(for: existsPredicate, evaluatedWith: element, handler: nil)
+        waitForExpectations(timeout: 50, handler: nil)
     }
 }
 extension XCUIElement {

@@ -75,7 +75,7 @@ class OxygenUnitTests: XCTestCase {
     //MARK: Plant Tests
     
     func testPlantTableView() {
-        let _ = PlantsTableViewController()
+        XCTAssertFalse(LoginViewController.isAccessibilityElement())
     }
     
     func testCreatingPlant(){
